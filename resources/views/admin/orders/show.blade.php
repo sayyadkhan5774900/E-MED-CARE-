@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.order.fields.pharmacy') }}
+                        </th>
+                        <td>
+                            {{ $order->pharmacy->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.order.fields.customer') }}
                         </th>
                         <td>
@@ -37,14 +45,6 @@
                         </th>
                         <td>
                             {{ $order->total }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.order.fields.pharmacy') }}
-                        </th>
-                        <td>
-                            {{ $order->pharmacy->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

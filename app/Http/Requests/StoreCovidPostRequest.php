@@ -19,11 +19,14 @@ class StoreCovidPostRequest extends FormRequest
         return [
             'title' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'excerpt' => [
                 'string',
-                'nullable',
+                'required',
+            ],
+            'detail' => [
+                'required',
             ],
         ];
     }

@@ -26,13 +26,13 @@
                             {{ trans('cruds.order.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.order.fields.pharmacy') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.order.fields.customer') }}
                         </th>
                         <th>
                             {{ trans('cruds.order.fields.total') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.order.fields.pharmacy') }}
                         </th>
                         <th>
                             &nbsp;
@@ -49,13 +49,13 @@
                                 {{ $order->id ?? '' }}
                             </td>
                             <td>
+                                {{ $order->pharmacy->name ?? '' }}
+                            </td>
+                            <td>
                                 {{ $order->customer->name ?? '' }}
                             </td>
                             <td>
                                 {{ $order->total ?? '' }}
-                            </td>
-                            <td>
-                                {{ $order->pharmacy->name ?? '' }}
                             </td>
                             <td>
                                 @can('order_show')
@@ -129,7 +129,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   });
   let table = $('.datatable-Order:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

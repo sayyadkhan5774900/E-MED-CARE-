@@ -41,18 +41,18 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.pharmacy.fields.address') }}
-                        </th>
-                        <td>
-                            {{ $pharmacy->address }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.pharmacy.fields.phone') }}
                         </th>
                         <td>
                             {{ $pharmacy->phone }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.pharmacy.fields.address') }}
+                        </th>
+                        <td>
+                            {{ $pharmacy->address }}
                         </td>
                     </tr>
                     <tr>

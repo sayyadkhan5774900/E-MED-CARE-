@@ -20,7 +20,7 @@ class MedicinesApiController extends Controller
     {
         abort_if(Gate::denies('medicine_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MedicineResource(Medicine::with(['category', 'pharmacy'])->get());
+        return new MedicineResource(Medicine::with(['pharmacy', 'category'])->get());
     }
 
     public function store(StoreMedicineRequest $request)
@@ -40,7 +40,7 @@ class MedicinesApiController extends Controller
     {
         abort_if(Gate::denies('medicine_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MedicineResource($medicine->load(['category', 'pharmacy']));
+        return new MedicineResource($medicine->load(['pharmacy', 'category']));
     }
 
     public function update(UpdateMedicineRequest $request, Medicine $medicine)

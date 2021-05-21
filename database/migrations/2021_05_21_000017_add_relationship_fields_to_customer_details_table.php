@@ -9,7 +9,7 @@ class AddRelationshipFieldsToCustomerDetailsTable extends Migration
     public function up()
     {
         Schema::table('customer_details', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id', 'customer_fk_3950843')->references('id')->on('users');
         });
     }

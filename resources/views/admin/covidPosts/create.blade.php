@@ -10,8 +10,8 @@
         <form method="POST" action="{{ route("admin.covid-posts.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="title">{{ trans('cruds.covidPost.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}">
+                <label class="required" for="title">{{ trans('cruds.covidPost.fields.title') }}</label>
+                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', '') }}" required>
                 @if($errors->has('title'))
                     <div class="invalid-feedback">
                         {{ $errors->first('title') }}
@@ -20,8 +20,8 @@
                 <span class="help-block">{{ trans('cruds.covidPost.fields.title_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="excerpt">{{ trans('cruds.covidPost.fields.excerpt') }}</label>
-                <input class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', '') }}">
+                <label class="required" for="excerpt">{{ trans('cruds.covidPost.fields.excerpt') }}</label>
+                <input class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', '') }}" required>
                 @if($errors->has('excerpt'))
                     <div class="invalid-feedback">
                         {{ $errors->first('excerpt') }}
@@ -30,8 +30,8 @@
                 <span class="help-block">{{ trans('cruds.covidPost.fields.excerpt_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="detail">{{ trans('cruds.covidPost.fields.detail') }}</label>
-                <textarea class="form-control {{ $errors->has('detail') ? 'is-invalid' : '' }}" name="detail" id="detail">{{ old('detail') }}</textarea>
+                <label class="required" for="detail">{{ trans('cruds.covidPost.fields.detail') }}</label>
+                <textarea class="form-control {{ $errors->has('detail') ? 'is-invalid' : '' }}" name="detail" id="detail" required>{{ old('detail') }}</textarea>
                 @if($errors->has('detail'))
                     <div class="invalid-feedback">
                         {{ $errors->first('detail') }}

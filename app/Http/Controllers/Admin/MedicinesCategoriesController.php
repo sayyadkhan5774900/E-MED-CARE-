@@ -8,6 +8,7 @@ use App\Http\Requests\MassDestroyMedicinesCategoryRequest;
 use App\Http\Requests\StoreMedicinesCategoryRequest;
 use App\Http\Requests\UpdateMedicinesCategoryRequest;
 use App\Models\MedicinesCategory;
+use App\Models\Pharmacy;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -21,7 +22,7 @@ class MedicinesCategoriesController extends Controller
     {
         abort_if(Gate::denies('medicines_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $medicinesCategories = MedicinesCategory::with(['parent_category', 'media'])->get();
+        $medicinesCategories = MedicinesCategory::with(['pharmacy', 'parent_category', 'media'])->get();
 
         return view('admin.medicinesCategories.index', compact('medicinesCategories'));
     }
@@ -30,9 +31,11 @@ class MedicinesCategoriesController extends Controller
     {
         abort_if(Gate::denies('medicines_category_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $pharmacies = Pharmacy::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $parent_categories = MedicinesCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.medicinesCategories.create', compact('parent_categories'));
+        return view('admin.medicinesCategories.create', compact('pharmacies', 'parent_categories'));
     }
 
     public function store(StoreMedicinesCategoryRequest $request)
@@ -54,11 +57,13 @@ class MedicinesCategoriesController extends Controller
     {
         abort_if(Gate::denies('medicines_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $pharmacies = Pharmacy::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
         $parent_categories = MedicinesCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $medicinesCategory->load('parent_category');
+        $medicinesCategory->load('pharmacy', 'parent_category');
 
-        return view('admin.medicinesCategories.edit', compact('parent_categories', 'medicinesCategory'));
+        return view('admin.medicinesCategories.edit', compact('pharmacies', 'parent_categories', 'medicinesCategory'));
     }
 
     public function update(UpdateMedicinesCategoryRequest $request, MedicinesCategory $medicinesCategory)
@@ -83,7 +88,7 @@ class MedicinesCategoriesController extends Controller
     {
         abort_if(Gate::denies('medicines_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $medicinesCategory->load('parent_category');
+        $medicinesCategory->load('pharmacy', 'parent_category');
 
         return view('admin.medicinesCategories.show', compact('medicinesCategory'));
     }

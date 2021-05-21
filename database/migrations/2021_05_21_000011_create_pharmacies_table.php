@@ -10,14 +10,14 @@ class CreatePharmaciesTable extends Migration
     {
         Schema::create('pharmacies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('description')->nullable();
-            $table->string('address')->nullable();
-            $table->string('phone')->nullable();
-            $table->time('opening_time')->nullable();
-            $table->time('closing_time')->nullable();
-            $table->float('longitude')->nullable();
-            $table->float('latitude')->nullable();
+            $table->string('phone');
+            $table->string('address');
+            $table->time('opening_time');
+            $table->time('closing_time');
+            $table->float('longitude');
+            $table->float('latitude');
             $table->timestamps();
             $table->softDeletes();
         });

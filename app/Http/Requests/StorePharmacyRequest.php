@@ -19,33 +19,39 @@ class StorePharmacyRequest extends FormRequest
         return [
             'name' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'description' => [
                 'string',
                 'nullable',
             ],
-            'address' => [
-                'string',
-                'nullable',
-            ],
             'phone' => [
                 'string',
-                'nullable',
+                'required',
+            ],
+            'address' => [
+                'string',
+                'required',
             ],
             'opening_time' => [
+                'required',
                 'date_format:' . config('panel.time_format'),
-                'nullable',
             ],
             'closing_time' => [
+                'required',
                 'date_format:' . config('panel.time_format'),
-                'nullable',
             ],
             'longitude' => [
                 'numeric',
+                'required',
             ],
             'latitude' => [
                 'numeric',
+                'required',
+            ],
+            'owner_id' => [
+                'required',
+                'integer',
             ],
         ];
     }

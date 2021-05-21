@@ -16,6 +16,18 @@ class UpdateOrderRequest extends FormRequest
 
     public function rules()
     {
-        return [];
+        return [
+            'pharmacy_id' => [
+                'required',
+                'integer',
+            ],
+            'customer_id' => [
+                'required',
+                'integer',
+            ],
+            'total' => [
+                'required',
+            ],
+        ];
     }
 }

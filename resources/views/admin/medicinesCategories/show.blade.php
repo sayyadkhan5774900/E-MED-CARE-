@@ -25,6 +25,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.medicinesCategory.fields.pharmacy') }}
+                        </th>
+                        <td>
+                            {{ $medicinesCategory->pharmacy->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.medicinesCategory.fields.parent_category') }}
+                        </th>
+                        <td>
+                            {{ $medicinesCategory->parent_category->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.medicinesCategory.fields.name') }}
                         </th>
                         <td>
@@ -41,14 +57,6 @@
                                     <img src="{{ $medicinesCategory->image->getUrl('thumb') }}">
                                 </a>
                             @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.medicinesCategory.fields.parent_category') }}
-                        </th>
-                        <td>
-                            {{ $medicinesCategory->parent_category->name ?? '' }}
                         </td>
                     </tr>
                 </tbody>

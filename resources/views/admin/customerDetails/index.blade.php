@@ -23,15 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.customerDetail.fields.id') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.customerDetail.fields.province') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.customerDetail.fields.city') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.customerDetail.fields.phone') }}
                         </th>
                         <th>
@@ -50,15 +41,6 @@
                         <tr data-entry-id="{{ $customerDetail->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $customerDetail->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $customerDetail->province ?? '' }}
-                            </td>
-                            <td>
-                                {{ $customerDetail->city ?? '' }}
                             </td>
                             <td>
                                 {{ $customerDetail->phone ?? '' }}
@@ -141,7 +123,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 50,
   });
   let table = $('.datatable-CustomerDetail:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

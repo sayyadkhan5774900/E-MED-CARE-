@@ -17,7 +17,7 @@ class OrderApiController extends Controller
     {
         abort_if(Gate::denies('order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new OrderResource(Order::with(['customer', 'pharmacy'])->get());
+        return new OrderResource(Order::with(['pharmacy', 'customer'])->get());
     }
 
     public function store(StoreOrderRequest $request)
@@ -33,7 +33,7 @@ class OrderApiController extends Controller
     {
         abort_if(Gate::denies('order_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new OrderResource($order->load(['customer', 'pharmacy']));
+        return new OrderResource($order->load(['pharmacy', 'customer']));
     }
 
     public function update(UpdateOrderRequest $request, Order $order)

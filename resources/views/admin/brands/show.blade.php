@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.brand.fields.pharmacy') }}
+                        </th>
+                        <td>
+                            {{ $brand->pharmacy->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.brand.fields.name') }}
                         </th>
                         <td>

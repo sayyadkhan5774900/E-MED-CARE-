@@ -23,7 +23,7 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.brand.fields.id') }}
+                            {{ trans('cruds.brand.fields.pharmacy') }}
                         </th>
                         <th>
                             {{ trans('cruds.brand.fields.name') }}
@@ -40,7 +40,7 @@
 
                             </td>
                             <td>
-                                {{ $brand->id ?? '' }}
+                                {{ $brand->pharmacy->name ?? '' }}
                             </td>
                             <td>
                                 {{ $brand->name ?? '' }}
@@ -117,7 +117,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   });
   let table = $('.datatable-Brand:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

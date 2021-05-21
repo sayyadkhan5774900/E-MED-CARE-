@@ -23,7 +23,7 @@ class MedicinesController extends Controller
     {
         abort_if(Gate::denies('medicine_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $medicines = Medicine::with(['category', 'pharmacy', 'media'])->get();
+        $medicines = Medicine::with(['pharmacy', 'category', 'media'])->get();
 
         return view('admin.medicines.index', compact('medicines'));
     }
@@ -32,11 +32,11 @@ class MedicinesController extends Controller
     {
         abort_if(Gate::denies('medicine_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = MedicinesCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $pharmacies = Pharmacy::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.medicines.create', compact('categories', 'pharmacies'));
+        $categories = MedicinesCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.medicines.create', compact('pharmacies', 'categories'));
     }
 
     public function store(StoreMedicineRequest $request)
@@ -58,13 +58,13 @@ class MedicinesController extends Controller
     {
         abort_if(Gate::denies('medicine_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $categories = MedicinesCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $pharmacies = Pharmacy::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $medicine->load('category', 'pharmacy');
+        $categories = MedicinesCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.medicines.edit', compact('categories', 'pharmacies', 'medicine'));
+        $medicine->load('pharmacy', 'category');
+
+        return view('admin.medicines.edit', compact('pharmacies', 'categories', 'medicine'));
     }
 
     public function update(UpdateMedicineRequest $request, Medicine $medicine)
@@ -89,7 +89,7 @@ class MedicinesController extends Controller
     {
         abort_if(Gate::denies('medicine_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $medicine->load('category', 'pharmacy');
+        $medicine->load('pharmacy', 'category');
 
         return view('admin.medicines.show', compact('medicine'));
     }
