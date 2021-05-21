@@ -31,8 +31,8 @@
                 <span class="help-block">{{ trans('cruds.customerDetail.fields.city_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="phone">{{ trans('cruds.customerDetail.fields.phone') }}</label>
-                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $customerDetail->phone) }}">
+                <label class="required" for="phone">{{ trans('cruds.customerDetail.fields.phone') }}</label>
+                <input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" id="phone" value="{{ old('phone', $customerDetail->phone) }}" required>
                 @if($errors->has('phone'))
                     <div class="invalid-feedback">
                         {{ $errors->first('phone') }}
@@ -41,8 +41,8 @@
                 <span class="help-block">{{ trans('cruds.customerDetail.fields.phone_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="address">{{ trans('cruds.customerDetail.fields.address') }}</label>
-                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $customerDetail->address) }}">
+                <label class="required" for="address">{{ trans('cruds.customerDetail.fields.address') }}</label>
+                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" value="{{ old('address', $customerDetail->address) }}" required>
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}
@@ -51,8 +51,8 @@
                 <span class="help-block">{{ trans('cruds.customerDetail.fields.address_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="customer_id">{{ trans('cruds.customerDetail.fields.customer') }}</label>
-                <select class="form-control select2 {{ $errors->has('customer') ? 'is-invalid' : '' }}" name="customer_id" id="customer_id">
+                <label class="required" for="customer_id">{{ trans('cruds.customerDetail.fields.customer') }}</label>
+                <select class="form-control select2 {{ $errors->has('customer') ? 'is-invalid' : '' }}" name="customer_id" id="customer_id" required>
                     @foreach($customers as $id => $entry)
                         <option value="{{ $id }}" {{ (old('customer_id') ? old('customer_id') : $customerDetail->customer->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach

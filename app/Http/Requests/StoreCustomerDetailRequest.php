@@ -27,11 +27,15 @@ class StoreCustomerDetailRequest extends FormRequest
             ],
             'phone' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'address' => [
                 'string',
-                'nullable',
+                'required',
+            ],
+            'customer_id' => [
+                'required',
+                'integer',
             ],
         ];
     }

@@ -12,8 +12,8 @@ class CreateCustomerDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->string('province')->nullable();
             $table->string('city')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
+            $table->string('phone');
+            $table->string('address');
             $table->timestamps();
             $table->softDeletes();
         });

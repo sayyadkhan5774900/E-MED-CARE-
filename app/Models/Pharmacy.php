@@ -23,8 +23,8 @@ class Pharmacy extends Model
     protected $fillable = [
         'name',
         'description',
-        'address',
         'phone',
+        'address',
         'opening_time',
         'closing_time',
         'longitude',

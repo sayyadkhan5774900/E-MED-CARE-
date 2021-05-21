@@ -23,19 +23,10 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.covidPost.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.covidPost.fields.title') }}
                         </th>
                         <th>
                             {{ trans('cruds.covidPost.fields.excerpt') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.covidPost.fields.detail') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.covidPost.fields.image') }}
                         </th>
                         <th>
                             &nbsp;
@@ -49,23 +40,10 @@
 
                             </td>
                             <td>
-                                {{ $covidPost->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $covidPost->title ?? '' }}
                             </td>
                             <td>
                                 {{ $covidPost->excerpt ?? '' }}
-                            </td>
-                            <td>
-                                {{ $covidPost->detail ?? '' }}
-                            </td>
-                            <td>
-                                @if($covidPost->image)
-                                    <a href="{{ $covidPost->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $covidPost->image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
                             </td>
                             <td>
                                 @can('covid_post_show')
@@ -139,7 +117,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   });
   let table = $('.datatable-CovidPost:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

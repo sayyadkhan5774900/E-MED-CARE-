@@ -23,16 +23,13 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.medicinesCategory.fields.id') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.medicinesCategory.fields.name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.medicinesCategory.fields.image') }}
+                            {{ trans('cruds.medicinesCategory.fields.pharmacy') }}
                         </th>
                         <th>
                             {{ trans('cruds.medicinesCategory.fields.parent_category') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.medicinesCategory.fields.name') }}
                         </th>
                         <th>
                             &nbsp;
@@ -46,20 +43,13 @@
 
                             </td>
                             <td>
-                                {{ $medicinesCategory->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $medicinesCategory->name ?? '' }}
-                            </td>
-                            <td>
-                                @if($medicinesCategory->image)
-                                    <a href="{{ $medicinesCategory->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $medicinesCategory->image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
+                                {{ $medicinesCategory->pharmacy->name ?? '' }}
                             </td>
                             <td>
                                 {{ $medicinesCategory->parent_category->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $medicinesCategory->name ?? '' }}
                             </td>
                             <td>
                                 @can('medicines_category_show')
@@ -133,7 +123,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   });
   let table = $('.datatable-MedicinesCategory:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

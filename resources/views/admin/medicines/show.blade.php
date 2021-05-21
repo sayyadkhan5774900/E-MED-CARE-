@@ -25,6 +25,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.medicine.fields.pharmacy') }}
+                        </th>
+                        <td>
+                            {{ $medicine->pharmacy->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.medicine.fields.category') }}
+                        </th>
+                        <td>
+                            {{ $medicine->category->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.medicine.fields.name') }}
                         </th>
                         <td>
@@ -57,18 +73,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.medicine.fields.image') }}
-                        </th>
-                        <td>
-                            @if($medicine->image)
-                                <a href="{{ $medicine->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                    <img src="{{ $medicine->image->getUrl('thumb') }}">
-                                </a>
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.medicine.fields.expiry_date') }}
                         </th>
                         <td>
@@ -77,18 +81,14 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.medicine.fields.category') }}
+                            {{ trans('cruds.medicine.fields.image') }}
                         </th>
                         <td>
-                            {{ $medicine->category->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.medicine.fields.pharmacy') }}
-                        </th>
-                        <td>
-                            {{ $medicine->pharmacy->name ?? '' }}
+                            @if($medicine->image)
+                                <a href="{{ $medicine->image->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $medicine->image->getUrl('thumb') }}">
+                                </a>
+                            @endif
                         </td>
                     </tr>
                 </tbody>

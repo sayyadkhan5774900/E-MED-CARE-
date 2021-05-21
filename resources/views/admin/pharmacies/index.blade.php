@@ -23,28 +23,13 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.pharmacy.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.pharmacy.fields.name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.pharmacy.fields.address') }}
                         </th>
                         <th>
                             {{ trans('cruds.pharmacy.fields.phone') }}
                         </th>
                         <th>
-                            {{ trans('cruds.pharmacy.fields.opening_time') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.pharmacy.fields.closing_time') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.pharmacy.fields.longitude') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.pharmacy.fields.latitude') }}
+                            {{ trans('cruds.pharmacy.fields.address') }}
                         </th>
                         <th>
                             {{ trans('cruds.pharmacy.fields.owner') }}
@@ -61,28 +46,13 @@
 
                             </td>
                             <td>
-                                {{ $pharmacy->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $pharmacy->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $pharmacy->address ?? '' }}
                             </td>
                             <td>
                                 {{ $pharmacy->phone ?? '' }}
                             </td>
                             <td>
-                                {{ $pharmacy->opening_time ?? '' }}
-                            </td>
-                            <td>
-                                {{ $pharmacy->closing_time ?? '' }}
-                            </td>
-                            <td>
-                                {{ $pharmacy->longitude ?? '' }}
-                            </td>
-                            <td>
-                                {{ $pharmacy->latitude ?? '' }}
+                                {{ $pharmacy->address ?? '' }}
                             </td>
                             <td>
                                 {{ $pharmacy->owner->name ?? '' }}
@@ -159,7 +129,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 25,
   });
   let table = $('.datatable-Pharmacy:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){

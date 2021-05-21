@@ -17,6 +17,14 @@ class StoreMedicineRequest extends FormRequest
     public function rules()
     {
         return [
+            'pharmacy_id' => [
+                'required',
+                'integer',
+            ],
+            'category_id' => [
+                'required',
+                'integer',
+            ],
             'name' => [
                 'string',
                 'required',
@@ -25,12 +33,15 @@ class StoreMedicineRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'price' => [
+                'required',
+            ],
             'in_stock' => [
                 'required',
             ],
             'expiry_date' => [
+                'required',
                 'date_format:' . config('panel.date_format'),
-                'nullable',
             ],
         ];
     }

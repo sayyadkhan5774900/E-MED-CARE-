@@ -11,6 +11,34 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label class="required" for="pharmacy_id">{{ trans('cruds.medicinesCategory.fields.pharmacy') }}</label>
+                <select class="form-control select2 {{ $errors->has('pharmacy') ? 'is-invalid' : '' }}" name="pharmacy_id" id="pharmacy_id" required>
+                    @foreach($pharmacies as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('pharmacy_id') ? old('pharmacy_id') : $medicinesCategory->pharmacy->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('pharmacy'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('pharmacy') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.medicinesCategory.fields.pharmacy_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="parent_category_id">{{ trans('cruds.medicinesCategory.fields.parent_category') }}</label>
+                <select class="form-control select2 {{ $errors->has('parent_category') ? 'is-invalid' : '' }}" name="parent_category_id" id="parent_category_id">
+                    @foreach($parent_categories as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('parent_category_id') ? old('parent_category_id') : $medicinesCategory->parent_category->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('parent_category'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('parent_category') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.medicinesCategory.fields.parent_category_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.medicinesCategory.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $medicinesCategory->name) }}" required>
                 @if($errors->has('name'))
@@ -30,20 +58,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.medicinesCategory.fields.image_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="parent_category_id">{{ trans('cruds.medicinesCategory.fields.parent_category') }}</label>
-                <select class="form-control select2 {{ $errors->has('parent_category') ? 'is-invalid' : '' }}" name="parent_category_id" id="parent_category_id">
-                    @foreach($parent_categories as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('parent_category_id') ? old('parent_category_id') : $medicinesCategory->parent_category->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('parent_category'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('parent_category') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicinesCategory.fields.parent_category_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

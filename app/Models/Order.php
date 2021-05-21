@@ -21,22 +21,22 @@ class Order extends Model
     ];
 
     protected $fillable = [
+        'pharmacy_id',
         'customer_id',
         'total',
-        'pharmacy_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function customer()
-    {
-        return $this->belongsTo(User::class, 'customer_id');
-    }
-
     public function pharmacy()
     {
         return $this->belongsTo(Pharmacy::class, 'pharmacy_id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(User::class, 'customer_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

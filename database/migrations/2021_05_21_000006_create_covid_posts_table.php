@@ -4,13 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class CreateCovidPostsTable extends Migration
 {
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('covid_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->decimal('total', 15, 2)->nullable();
+            $table->string('title');
+            $table->string('excerpt');
+            $table->longText('detail');
             $table->timestamps();
             $table->softDeletes();
         });

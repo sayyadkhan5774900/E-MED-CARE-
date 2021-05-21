@@ -31,13 +31,13 @@ class Medicine extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'pharmacy_id',
+        'category_id',
         'name',
         'description',
         'price',
         'in_stock',
         'expiry_date',
-        'category_id',
-        'pharmacy_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -49,16 +49,14 @@ class Medicine extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function getImageAttribute()
+    public function pharmacy()
     {
-        $file = $this->getMedia('image')->last();
-        if ($file) {
-            $file->url       = $file->getUrl();
-            $file->thumbnail = $file->getUrl('thumb');
-            $file->preview   = $file->getUrl('preview');
-        }
+        return $this->belongsTo(Pharmacy::class, 'pharmacy_id');
+    }
 
-        return $file;
+    public function category()
+    {
+        return $this->belongsTo(MedicinesCategory::class, 'category_id');
     }
 
     public function getExpiryDateAttribute($value)
@@ -71,14 +69,16 @@ class Medicine extends Model implements HasMedia
         $this->attributes['expiry_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function category()
+    public function getImageAttribute()
     {
-        return $this->belongsTo(MedicinesCategory::class, 'category_id');
-    }
+        $file = $this->getMedia('image')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
 
-    public function pharmacy()
-    {
-        return $this->belongsTo(Pharmacy::class, 'pharmacy_id');
+        return $file;
     }
 
     protected function serializeDate(DateTimeInterface $date)

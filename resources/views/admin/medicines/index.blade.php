@@ -23,13 +23,10 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.medicine.fields.id') }}
+                            {{ trans('cruds.medicine.fields.category') }}
                         </th>
                         <th>
                             {{ trans('cruds.medicine.fields.name') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.medicine.fields.description') }}
                         </th>
                         <th>
                             {{ trans('cruds.medicine.fields.price') }}
@@ -38,16 +35,7 @@
                             {{ trans('cruds.medicine.fields.in_stock') }}
                         </th>
                         <th>
-                            {{ trans('cruds.medicine.fields.image') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.medicine.fields.expiry_date') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.medicine.fields.category') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.medicine.fields.pharmacy') }}
                         </th>
                         <th>
                             &nbsp;
@@ -61,13 +49,10 @@
 
                             </td>
                             <td>
-                                {{ $medicine->id ?? '' }}
+                                {{ $medicine->category->name ?? '' }}
                             </td>
                             <td>
                                 {{ $medicine->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $medicine->description ?? '' }}
                             </td>
                             <td>
                                 {{ $medicine->price ?? '' }}
@@ -77,20 +62,7 @@
                                 <input type="checkbox" disabled="disabled" {{ $medicine->in_stock ? 'checked' : '' }}>
                             </td>
                             <td>
-                                @if($medicine->image)
-                                    <a href="{{ $medicine->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                        <img src="{{ $medicine->image->getUrl('thumb') }}">
-                                    </a>
-                                @endif
-                            </td>
-                            <td>
                                 {{ $medicine->expiry_date ?? '' }}
-                            </td>
-                            <td>
-                                {{ $medicine->category->name ?? '' }}
-                            </td>
-                            <td>
-                                {{ $medicine->pharmacy->name ?? '' }}
                             </td>
                             <td>
                                 @can('medicine_show')
@@ -164,7 +136,7 @@
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 100,
+    pageLength: 50,
   });
   let table = $('.datatable-Medicine:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
