@@ -29,7 +29,6 @@ class MedicinesCategory extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'pharmacy_id',
         'parent_category_id',
         'name',
         'created_at',
@@ -41,11 +40,6 @@ class MedicinesCategory extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
-    }
-
-    public function pharmacy()
-    {
-        return $this->belongsTo(Pharmacy::class, 'pharmacy_id');
     }
 
     public function parent_category()

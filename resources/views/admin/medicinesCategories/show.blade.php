@@ -25,14 +25,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.medicinesCategory.fields.pharmacy') }}
-                        </th>
-                        <td>
-                            {{ $medicinesCategory->pharmacy->name ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.medicinesCategory.fields.parent_category') }}
                         </th>
                         <td>

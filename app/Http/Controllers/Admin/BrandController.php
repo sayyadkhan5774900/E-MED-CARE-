@@ -7,7 +7,6 @@ use App\Http\Requests\MassDestroyBrandRequest;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
 use App\Models\Brand;
-use App\Models\Pharmacy;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +17,7 @@ class BrandController extends Controller
     {
         abort_if(Gate::denies('brand_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $brands = Brand::with(['pharmacy'])->get();
+        $brands = Brand::all();
 
         return view('admin.brands.index', compact('brands'));
     }
@@ -27,9 +26,7 @@ class BrandController extends Controller
     {
         abort_if(Gate::denies('brand_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $pharmacies = Pharmacy::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.brands.create', compact('pharmacies'));
+        return view('admin.brands.create');
     }
 
     public function store(StoreBrandRequest $request)
@@ -43,11 +40,7 @@ class BrandController extends Controller
     {
         abort_if(Gate::denies('brand_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $pharmacies = Pharmacy::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $brand->load('pharmacy');
-
-        return view('admin.brands.edit', compact('pharmacies', 'brand'));
+        return view('admin.brands.edit', compact('brand'));
     }
 
     public function update(UpdateBrandRequest $request, Brand $brand)
@@ -60,8 +53,6 @@ class BrandController extends Controller
     public function show(Brand $brand)
     {
         abort_if(Gate::denies('brand_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $brand->load('pharmacy');
 
         return view('admin.brands.show', compact('brand'));
     }

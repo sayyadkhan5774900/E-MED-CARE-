@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.medicinesCategory.fields.pharmacy') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.medicinesCategory.fields.parent_category') }}
                         </th>
                         <th>
@@ -41,9 +38,6 @@
                         <tr data-entry-id="{{ $medicinesCategory->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $medicinesCategory->pharmacy->name ?? '' }}
                             </td>
                             <td>
                                 {{ $medicinesCategory->parent_category->name ?? '' }}

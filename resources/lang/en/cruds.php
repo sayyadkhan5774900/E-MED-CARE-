@@ -85,8 +85,6 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
-            'pharmacy'          => 'Pharmacy',
-            'pharmacy_helper'   => ' ',
         ],
     ],
     'medicinesCategory' => [
@@ -107,8 +105,6 @@ return [
             'deleted_at_helper'      => ' ',
             'parent_category'        => 'Parent Category',
             'parent_category_helper' => ' ',
-            'pharmacy'               => 'Pharmacy',
-            'pharmacy_helper'        => ' ',
         ],
     ],
     'medicine' => [

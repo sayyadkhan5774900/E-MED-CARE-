@@ -17,7 +17,7 @@ class BrandApiController extends Controller
     {
         abort_if(Gate::denies('brand_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new BrandResource(Brand::with(['pharmacy'])->get());
+        return new BrandResource(Brand::all());
     }
 
     public function store(StoreBrandRequest $request)
@@ -33,7 +33,7 @@ class BrandApiController extends Controller
     {
         abort_if(Gate::denies('brand_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new BrandResource($brand->load(['pharmacy']));
+        return new BrandResource($brand);
     }
 
     public function update(UpdateBrandRequest $request, Brand $brand)

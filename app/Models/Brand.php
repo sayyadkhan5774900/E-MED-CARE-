@@ -21,17 +21,11 @@ class Brand extends Model
     ];
 
     protected $fillable = [
-        'pharmacy_id',
         'name',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
-
-    public function pharmacy()
-    {
-        return $this->belongsTo(Pharmacy::class, 'pharmacy_id');
-    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

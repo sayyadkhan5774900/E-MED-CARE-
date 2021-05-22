@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.brand.fields.pharmacy') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.brand.fields.name') }}
                         </th>
                         <th>
@@ -38,9 +35,6 @@
                         <tr data-entry-id="{{ $brand->id }}">
                             <td>
 
-                            </td>
-                            <td>
-                                {{ $brand->pharmacy->name ?? '' }}
                             </td>
                             <td>
                                 {{ $brand->name ?? '' }}

@@ -11,20 +11,6 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="pharmacy_id">{{ trans('cruds.medicinesCategory.fields.pharmacy') }}</label>
-                <select class="form-control select2 {{ $errors->has('pharmacy') ? 'is-invalid' : '' }}" name="pharmacy_id" id="pharmacy_id" required>
-                    @foreach($pharmacies as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('pharmacy_id') ? old('pharmacy_id') : $medicinesCategory->pharmacy->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('pharmacy'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('pharmacy') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicinesCategory.fields.pharmacy_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="parent_category_id">{{ trans('cruds.medicinesCategory.fields.parent_category') }}</label>
                 <select class="form-control select2 {{ $errors->has('parent_category') ? 'is-invalid' : '' }}" name="parent_category_id" id="parent_category_id">
                     @foreach($parent_categories as $id => $entry)
