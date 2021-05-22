@@ -19,9 +19,6 @@
             <table class=" table table-bordered table-striped table-hover datatable datatable-Pharmacy">
                 <thead>
                     <tr>
-                        <th width="10">
-
-                        </th>
                         <th>
                             {{ trans('cruds.pharmacy.fields.id') }}
                         </th>
@@ -45,9 +42,6 @@
                 <tbody>
                     @foreach($pharmacies as $key => $pharmacy)
                         <tr data-entry-id="{{ $pharmacy->id }}">
-                            <td>
-
-                            </td>
                             <td>
                                 {{ $pharmacy->id ?? '' }}
                             </td>
