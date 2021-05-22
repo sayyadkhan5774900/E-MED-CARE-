@@ -23,6 +23,9 @@
 
                         </th>
                         <th>
+                            {{ trans('cruds.covidPost.fields.id') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.covidPost.fields.title') }}
                         </th>
                         <th>
@@ -38,6 +41,9 @@
                         <tr data-entry-id="{{ $covidPost->id }}">
                             <td>
 
+                            </td>
+                            <td>
+                                {{ $covidPost->id ?? '' }}
                             </td>
                             <td>
                                 {{ $covidPost->title ?? '' }}
@@ -116,7 +122,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 2, 'desc' ]],
     pageLength: 25,
   });
   let table = $('.datatable-CovidPost:not(.ajaxTable)').DataTable({ buttons: dtButtons })

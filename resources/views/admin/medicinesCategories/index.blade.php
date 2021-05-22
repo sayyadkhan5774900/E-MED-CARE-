@@ -23,6 +23,9 @@
 
                         </th>
                         <th>
+                            {{ trans('cruds.medicinesCategory.fields.id') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.medicinesCategory.fields.parent_category') }}
                         </th>
                         <th>
@@ -38,6 +41,9 @@
                         <tr data-entry-id="{{ $medicinesCategory->id }}">
                             <td>
 
+                            </td>
+                            <td>
+                                {{ $medicinesCategory->id ?? '' }}
                             </td>
                             <td>
                                 {{ $medicinesCategory->parent_category->name ?? '' }}
@@ -116,7 +122,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 2, 'desc' ]],
     pageLength: 25,
   });
   let table = $('.datatable-MedicinesCategory:not(.ajaxTable)').DataTable({ buttons: dtButtons })

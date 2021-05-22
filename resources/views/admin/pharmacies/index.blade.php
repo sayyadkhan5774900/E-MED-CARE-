@@ -23,6 +23,9 @@
 
                         </th>
                         <th>
+                            {{ trans('cruds.pharmacy.fields.id') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.pharmacy.fields.name') }}
                         </th>
                         <th>
@@ -44,6 +47,9 @@
                         <tr data-entry-id="{{ $pharmacy->id }}">
                             <td>
 
+                            </td>
+                            <td>
+                                {{ $pharmacy->id ?? '' }}
                             </td>
                             <td>
                                 {{ $pharmacy->name ?? '' }}
@@ -128,7 +134,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 2, 'desc' ]],
     pageLength: 25,
   });
   let table = $('.datatable-Pharmacy:not(.ajaxTable)').DataTable({ buttons: dtButtons })

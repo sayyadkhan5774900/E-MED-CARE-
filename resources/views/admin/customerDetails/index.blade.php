@@ -23,6 +23,9 @@
 
                         </th>
                         <th>
+                            {{ trans('cruds.customerDetail.fields.id') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.customerDetail.fields.phone') }}
                         </th>
                         <th>
@@ -41,6 +44,9 @@
                         <tr data-entry-id="{{ $customerDetail->id }}">
                             <td>
 
+                            </td>
+                            <td>
+                                {{ $customerDetail->id ?? '' }}
                             </td>
                             <td>
                                 {{ $customerDetail->phone ?? '' }}
@@ -122,7 +128,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 2, 'desc' ]],
     pageLength: 50,
   });
   let table = $('.datatable-CustomerDetail:not(.ajaxTable)').DataTable({ buttons: dtButtons })
