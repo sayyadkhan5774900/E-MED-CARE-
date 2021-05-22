@@ -23,10 +23,10 @@
                             {{ trans('cruds.medicinesCategory.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.medicinesCategory.fields.parent_category') }}
+                            {{ trans('cruds.medicinesCategory.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.medicinesCategory.fields.name') }}
+                            {{ trans('cruds.medicinesCategory.fields.parent_category') }}
                         </th>
                         <th>
                             &nbsp;
@@ -40,10 +40,10 @@
                                 {{ $medicinesCategory->id ?? '' }}
                             </td>
                             <td>
-                                {{ $medicinesCategory->parent_category->name ?? '' }}
+                                {{ $medicinesCategory->name ?? '' }}
                             </td>
                             <td>
-                                {{ $medicinesCategory->name ?? '' }}
+                                {{ $medicinesCategory->parent_category->name ?? '' }}
                             </td>
                             <td>
                                 @can('medicines_category_show')

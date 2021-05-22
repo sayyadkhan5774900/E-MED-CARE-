@@ -14,6 +14,13 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
+
+            PharmaciesTabelSeeder::class,
+            BrandsTabelSeeder::class,
+            CategoriesTabelSeeder::class,
+            MedicinesTabelSeeder::class,
+            PostsTableSeeder::class,
+
         ]);
     }
 }
