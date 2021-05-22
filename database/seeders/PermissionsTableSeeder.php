@@ -216,6 +216,66 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 52,
+                'title' => 'pharmacy_medicine_create',
+            ],
+            [
+                'id'    => 53,
+                'title' => 'pharmacy_medicine_edit',
+            ],
+            [
+                'id'    => 54,
+                'title' => 'pharmacy_medicine_show',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'pharmacy_medicine_delete',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'pharmacy_medicine_access',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'pharmacy_customer_create',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'pharmacy_customer_edit',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'pharmacy_customer_show',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'pharmacy_customer_delete',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'pharmacy_customer_access',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'pharmacy_order_create',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'pharmacy_order_edit',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'pharmacy_order_show',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'pharmacy_order_delete',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'pharmacy_order_access',
+            ],
+            [
+                'id'    => 67,
                 'title' => 'profile_password_edit',
             ],
         ];

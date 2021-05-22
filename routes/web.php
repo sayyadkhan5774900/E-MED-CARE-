@@ -59,6 +59,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('covid-posts/media', 'CovidPostController@storeMedia')->name('covid-posts.storeMedia');
     Route::post('covid-posts/ckmedia', 'CovidPostController@storeCKEditorImages')->name('covid-posts.storeCKEditorImages');
     Route::resource('covid-posts', 'CovidPostController');
+
+    // Pharmacy Medicines
+    Route::delete('pharmacy-medicines/destroy', 'PharmacyMedicinesController@massDestroy')->name('pharmacy-medicines.massDestroy');
+    Route::resource('pharmacy-medicines', 'PharmacyMedicinesController');
+
+    // Pharmacy Customers
+    Route::delete('pharmacy-customers/destroy', 'PharmacyCustomersController@massDestroy')->name('pharmacy-customers.massDestroy');
+    Route::resource('pharmacy-customers', 'PharmacyCustomersController');
+
+    // Pharmacy Orders
+    Route::delete('pharmacy-orders/destroy', 'PharmacyOrdersController@massDestroy')->name('pharmacy-orders.massDestroy');
+    Route::resource('pharmacy-orders', 'PharmacyOrdersController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

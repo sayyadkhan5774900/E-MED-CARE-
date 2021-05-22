@@ -33,4 +33,13 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Covid Post
     Route::post('covid-posts/media', 'CovidPostApiController@storeMedia')->name('covid-posts.storeMedia');
     Route::apiResource('covid-posts', 'CovidPostApiController');
+
+    // Pharmacy Medicines
+    Route::apiResource('pharmacy-medicines', 'PharmacyMedicinesApiController');
+
+    // Pharmacy Customers
+    Route::apiResource('pharmacy-customers', 'PharmacyCustomersApiController');
+
+    // Pharmacy Orders
+    Route::apiResource('pharmacy-orders', 'PharmacyOrdersApiController');
 });

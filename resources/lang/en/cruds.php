@@ -138,8 +138,8 @@ return [
         ],
     ],
     'customerDetail' => [
-        'title'          => 'Customers Details',
-        'title_singular' => 'Customers Detail',
+        'title'          => 'Customers',
+        'title_singular' => 'Customer',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
@@ -234,5 +234,17 @@ return [
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
         ],
+    ],
+    'pharmacyMedicine' => [
+        'title'          => 'Medicines',
+        'title_singular' => 'Medicine',
+    ],
+    'pharmacyCustomer' => [
+        'title'          => 'Customers',
+        'title_singular' => 'Customer',
+    ],
+    'pharmacyOrder' => [
+        'title'          => 'Orders',
+        'title_singular' => 'Order',
     ],
 ];

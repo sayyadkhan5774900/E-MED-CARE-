@@ -127,6 +127,36 @@
                 </ul>
             </li>
         @endcan
+        @can('pharmacy_medicine_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.pharmacy-medicines.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pharmacy-medicines") || request()->is("admin/pharmacy-medicines/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-briefcase-medical c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.pharmacyMedicine.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('pharmacy_customer_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.pharmacy-customers.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pharmacy-customers") || request()->is("admin/pharmacy-customers/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-users c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.pharmacyCustomer.title') }}
+                </a>
+            </li>
+        @endcan
+        @can('pharmacy_order_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.pharmacy-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pharmacy-orders") || request()->is("admin/pharmacy-orders/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.pharmacyOrder.title') }}
+                </a>
+            </li>
+        @endcan
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
             @can('profile_password_edit')
                 <li class="c-sidebar-nav-item">
