@@ -59,7 +59,6 @@
                                 {{ $errors->first('image') }}
                             </div>
                         @endif
-                        <span class="help-block">{{ trans('cruds.covidPost.fields.image_helper') }}</span>
                     </div>
                 </div>
             </div>
