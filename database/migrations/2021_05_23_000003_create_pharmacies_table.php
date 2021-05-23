@@ -16,8 +16,8 @@ class CreatePharmaciesTable extends Migration
             $table->string('address');
             $table->time('opening_time');
             $table->time('closing_time');
-            $table->float('longitude');
-            $table->float('latitude');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->timestamps();
             $table->softDeletes();
         });

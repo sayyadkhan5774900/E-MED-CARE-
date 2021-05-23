@@ -41,17 +41,17 @@ class StorePharmacyRequest extends FormRequest
                 'required',
                 'date_format:' . config('panel.time_format'),
             ],
-            'longitude' => [
-                'numeric',
-                'required',
-            ],
-            'latitude' => [
-                'numeric',
-                'required',
-            ],
             'owner_id' => [
                 'required',
                 'integer',
+            ],
+            'longitude' => [
+                'string',
+                'required',
+            ],
+            'latitude' => [
+                'string',
+                'required',
             ],
         ];
     }
