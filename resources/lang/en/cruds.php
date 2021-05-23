@@ -179,6 +179,8 @@ return [
             'total_helper'      => ' ',
             'pharmacy'          => 'Pharmacy',
             'pharmacy_helper'   => ' ',
+            'status'            => 'Status',
+            'status_helper'     => ' ',
         ],
     ],
     'pharmacy' => [

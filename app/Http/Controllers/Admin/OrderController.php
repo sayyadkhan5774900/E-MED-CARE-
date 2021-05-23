@@ -19,7 +19,7 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $orders = Order::with(['customer', 'pharmacy'])->get();
+        $orders = Order::with(['pharmacy', 'customer'])->get();
 
         return view('admin.orders.index', compact('orders'));
     }
@@ -28,11 +28,11 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $customers = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $pharmacies = Pharmacy::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.orders.create', compact('customers', 'pharmacies'));
+        $customers = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.orders.create', compact('pharmacies', 'customers'));
     }
 
     public function store(StoreOrderRequest $request)
@@ -46,13 +46,13 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $customers = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $pharmacies = Pharmacy::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $order->load('customer', 'pharmacy');
+        $customers = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.orders.edit', compact('customers', 'pharmacies', 'order'));
+        $order->load('pharmacy', 'customer');
+
+        return view('admin.orders.edit', compact('pharmacies', 'customers', 'order'));
     }
 
     public function update(UpdateOrderRequest $request, Order $order)
@@ -66,7 +66,7 @@ class OrderController extends Controller
     {
         abort_if(Gate::denies('order_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $order->load('customer', 'pharmacy');
+        $order->load('pharmacy', 'customer');
 
         return view('admin.orders.show', compact('order'));
     }

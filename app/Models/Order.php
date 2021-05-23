@@ -12,6 +12,12 @@ class Order extends Model
     use SoftDeletes;
     use HasFactory;
 
+    public const STATUS_SELECT = [
+        'pending'   => 'Pending',
+        'completed' => 'Completed',
+        'cancelled' => 'Cancelled',
+    ];
+
     public $table = 'orders';
 
     protected $dates = [
@@ -24,6 +30,7 @@ class Order extends Model
         'pharmacy_id',
         'customer_id',
         'total',
+        'status',
         'created_at',
         'updated_at',
         'deleted_at',
