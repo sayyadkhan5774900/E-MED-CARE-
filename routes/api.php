@@ -5,15 +5,26 @@
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], function () {
    
     // Brand
-    Route::apiResource('brands', 'BrandApiController');
+    Route::get('brands', 'BrandApiController@index');
+    Route::get('brands/{brand}', 'BrandApiController@show');
 
     // Medicines Categories
-    Route::post('medicines-categories/media', 'MedicinesCategoriesApiController@storeMedia')->name('medicines-categories.storeMedia');
-    Route::apiResource('medicines-categories', 'MedicinesCategoriesApiController');
+    Route::get('medicines-categories', 'MedicinesCategoriesApiController@index');
+    Route::get('medicines-categories/{medicinesCategory}', 'MedicinesCategoriesApiController@show');
 
     // Medicines
-    Route::post('medicines/media', 'MedicinesApiController@storeMedia')->name('medicines.storeMedia');
-    Route::apiResource('medicines', 'MedicinesApiController');
+    Route::get('medicines', 'MedicinesApiController@index');
+    Route::get('medicines/{medicine}', 'MedicinesApiController@show');
+
+    // Pharmacy
+    Route::get('pharmacies', 'PharmacyApiController@index');
+    Route::get('pharmacies/{pharmacy}', 'PharmacyApiController@show');
+    Route::get('pharmacies/{pharmacy}/medicines', 'PharmacyApiController@medicines');
+    Route::get('pharmacies/{pharmacy}/medicines-categories/{medicinesCategory}/medicines', 'PharmacyApiController@medicinesByCategory');
+
+    // Covid Post
+    Route::get('covid-posts', 'CovidPostApiController@index');
+    Route::get('covid-posts/{covidPost}', 'CovidPostApiController@show');
 
     // Customer Detail
     Route::apiResource('customer-details', 'CustomerDetailApiController');
@@ -21,11 +32,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], 
     // Order
     Route::apiResource('orders', 'OrderApiController');
 
-    // Pharmacy
-    Route::apiResource('pharmacies', 'PharmacyApiController');
-
-    // Covid Post
-    Route::post('covid-posts/media', 'CovidPostApiController@storeMedia')->name('covid-posts.storeMedia');
-    Route::apiResource('covid-posts', 'CovidPostApiController');
 });
 

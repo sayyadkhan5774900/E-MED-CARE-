@@ -8,7 +8,7 @@ class MedicineResource extends JsonResource
 {
     public function toArray($request)
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
 
         return [
             'id' => $this->id,
@@ -17,13 +17,12 @@ class MedicineResource extends JsonResource
             'price' => $this->price,
             'in_stock' => $this->in_stock,
             'expiry_date' => $this->expiry_date,
-            'pharmacy_id' => $this->pharmacy_id,
-            'pharmacy_name' => $this->pharmacy ? $this->pharmacy->name : $this->pharmacy,
-            'category_id' => $this->category_id,
-            'category_name' => $this->category ? $this->category->name : $this->category,
-            'image_url' => $this->image->url,
-            'image_thumbnail' => $this->image->thumbnail,
-            'image_preview' => $this->image->preview,
+            'image_url' => $this->image ? $this->image->url : $this->image,
+            'image_thumbnail' => $this->image ? $this->image->thumbnail : $this->image,
+            'image_preview' => $this->image ? $this->image->preview : $this->image,
+            'brand' => new BrandResource($this->brand),
+            'pharmacy' =>  new PharmacyResource($this->pharmacy),
+            'category' => new MedicinesCategoryResource($this->category),
         ];
 
     }

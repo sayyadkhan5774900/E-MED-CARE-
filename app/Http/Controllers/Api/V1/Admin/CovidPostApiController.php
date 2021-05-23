@@ -18,57 +18,12 @@ class CovidPostApiController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('covid_post_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        return new CovidPostResource(CovidPost::all());
-    }
-
-    public function store(StoreCovidPostRequest $request)
-    {
-        $covidPost = CovidPost::create($request->all());
-
-        if ($request->input('image', false)) {
-            $covidPost->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
-        }
-
-        return (new CovidPostResource($covidPost))
-            ->response()
-            ->setStatusCode(Response::HTTP_CREATED);
+        return CovidPostResource::collection(CovidPost::all());
     }
 
     public function show(CovidPost $covidPost)
     {
-        abort_if(Gate::denies('covid_post_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         return new CovidPostResource($covidPost);
     }
 
-    public function update(UpdateCovidPostRequest $request, CovidPost $covidPost)
-    {
-        $covidPost->update($request->all());
-
-        if ($request->input('image', false)) {
-            if (!$covidPost->image || $request->input('image') !== $covidPost->image->file_name) {
-                if ($covidPost->image) {
-                    $covidPost->image->delete();
-                }
-                $covidPost->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
-            }
-        } elseif ($covidPost->image) {
-            $covidPost->image->delete();
-        }
-
-        return (new CovidPostResource($covidPost))
-            ->response()
-            ->setStatusCode(Response::HTTP_ACCEPTED);
-    }
-
-    public function destroy(CovidPost $covidPost)
-    {
-        abort_if(Gate::denies('covid_post_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $covidPost->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
-    }
 }

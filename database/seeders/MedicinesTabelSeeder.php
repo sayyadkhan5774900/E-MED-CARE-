@@ -30,7 +30,7 @@ class MedicinesTabelSeeder extends Seeder
                 'description'       => 'Amaryl (glimepiride) is an oral diabetes medicine that helps control blood sugar levels.',
                 'in_stock'       => true,
                 'expiry_date'       => now()->addYear(rand(3, 6))->format(config('panel.date_format')),
-                'category_id'       => 2,
+                'category_id'       => 1,
                 'pharmacy_id'       => 1,
                 'price'       => ' 7.83',
                 
@@ -60,7 +60,7 @@ class MedicinesTabelSeeder extends Seeder
                 'description'       => 'Amaryl (glimepiride) is an oral diabetes medicine that helps control blood sugar levels.',
                 'in_stock'       => true,
                 'expiry_date'       => now()->addYear(rand(3, 6))->format(config('panel.date_format')),
-                'category_id'       => 2,
+                'category_id'       => 1,
                 'pharmacy_id'       => 2,
                 'price'       => ' 7.83',
                 
@@ -90,7 +90,7 @@ class MedicinesTabelSeeder extends Seeder
                 'description'       => 'Amaryl (glimepiride) is an oral diabetes medicine that helps control blood sugar levels.',
                 'in_stock'       => true,
                 'expiry_date'       => now()->addYear(rand(3, 6))->format(config('panel.date_format')),
-                'category_id'       => 2,
+                'category_id'       => 1,
                 'pharmacy_id'       => 3,
                 'price'       => ' 7.83',
                 

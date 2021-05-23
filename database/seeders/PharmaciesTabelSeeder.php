@@ -30,8 +30,7 @@ class PharmaciesTabelSeeder extends Seeder
                 'phone'       => '03334329820',
                 'opening_time'       => '09:00:00',
                 'closing_time'       => '24:00:00',
-                'address'       => ' Malik Market, Zafar-ul-Haq Rd, Glass Factory, Mohalla 
-                Chaudhry Hukamdad, Chah Sultan, Rawalpindi, Punjab',
+                'address'       => ' Malik Market, Zafar-ul-Haq Rd, Glass Factory, Mohalla Chaudhry Hukamdad, Chah Sultan, Rawalpindi, Punjab',
                 'longitude'       => 33.618326914681056,
                 'latitude'       => 73.07971443012673,
                 'owner_id'       => 1,
