@@ -1,15 +1,9 @@
 <?php
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
-    // Permissions
-    Route::apiResource('permissions', 'PermissionsApiController');
+// , 'middleware' => ['auth:sanctum']
 
-    // Roles
-    Route::apiResource('roles', 'RolesApiController');
-
-    // Users
-    Route::apiResource('users', 'UsersApiController');
-
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], function () {
+   
     // Brand
     Route::apiResource('brands', 'BrandApiController');
 
@@ -34,3 +28,4 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('covid-posts/media', 'CovidPostApiController@storeMedia')->name('covid-posts.storeMedia');
     Route::apiResource('covid-posts', 'CovidPostApiController');
 });
+
