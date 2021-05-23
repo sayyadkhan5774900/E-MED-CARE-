@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyMedicineRequest;
 use App\Http\Requests\StoreMedicineRequest;
 use App\Http\Requests\UpdateMedicineRequest;
+use App\Models\Brand;
 use App\Models\Medicine;
 use App\Models\MedicinesCategory;
 use App\Models\Pharmacy;
@@ -23,7 +24,7 @@ class MedicinesController extends Controller
     {
         abort_if(Gate::denies('medicine_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $medicines = Medicine::with(['pharmacy', 'category', 'media'])->get();
+        $medicines = Medicine::with(['pharmacy', 'category', 'brand', 'media'])->get();
 
         return view('admin.medicines.index', compact('medicines'));
     }
@@ -36,7 +37,9 @@ class MedicinesController extends Controller
 
         $categories = MedicinesCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.medicines.create', compact('pharmacies', 'categories'));
+        $brands = Brand::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.medicines.create', compact('pharmacies', 'categories', 'brands'));
     }
 
     public function store(StoreMedicineRequest $request)
@@ -62,9 +65,11 @@ class MedicinesController extends Controller
 
         $categories = MedicinesCategory::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $medicine->load('pharmacy', 'category');
+        $brands = Brand::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.medicines.edit', compact('pharmacies', 'categories', 'medicine'));
+        $medicine->load('pharmacy', 'category', 'brand');
+
+        return view('admin.medicines.edit', compact('pharmacies', 'categories', 'brands', 'medicine'));
     }
 
     public function update(UpdateMedicineRequest $request, Medicine $medicine)
@@ -89,7 +94,7 @@ class MedicinesController extends Controller
     {
         abort_if(Gate::denies('medicine_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $medicine->load('pharmacy', 'category');
+        $medicine->load('pharmacy', 'category', 'brand');
 
         return view('admin.medicines.show', compact('medicine'));
     }

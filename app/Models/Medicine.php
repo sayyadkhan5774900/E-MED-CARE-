@@ -38,6 +38,7 @@ class Medicine extends Model implements HasMedia
         'price',
         'in_stock',
         'expiry_date',
+        'brand_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -67,6 +68,11 @@ class Medicine extends Model implements HasMedia
     public function setExpiryDateAttribute($value)
     {
         $this->attributes['expiry_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 
     public function getImageAttribute()

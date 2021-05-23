@@ -81,6 +81,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.medicine.fields.brand') }}
+                        </th>
+                        <td>
+                            {{ $medicine->brand->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.medicine.fields.image') }}
                         </th>
                         <td>

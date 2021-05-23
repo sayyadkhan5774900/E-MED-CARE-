@@ -91,6 +91,20 @@
                 <span class="help-block">{{ trans('cruds.medicine.fields.expiry_date_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="brand_id">{{ trans('cruds.medicine.fields.brand') }}</label>
+                <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
+                    @foreach($brands as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('brand_id') ? old('brand_id') : $medicine->brand->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('brand'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('brand') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.medicine.fields.brand_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="image">{{ trans('cruds.medicine.fields.image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
                 </div>

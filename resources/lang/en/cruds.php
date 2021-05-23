@@ -135,6 +135,8 @@ return [
             'deleted_at_helper'  => ' ',
             'pharmacy'           => 'Pharmacy',
             'pharmacy_helper'    => ' ',
+            'brand'              => 'Brand',
+            'brand_helper'       => ' ',
         ],
     ],
     'customerDetail' => [
