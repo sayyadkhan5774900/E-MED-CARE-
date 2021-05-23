@@ -52,6 +52,7 @@ class MedicinesTabelSeeder extends Seeder
                 'expiry_date'       => now()->addYear(rand(3, 6))->format(config('panel.date_format')),
                 'category_id'       => 2,
                 'pharmacy_id'       => 2,
+                'brand_id'       => 2,
                 'price'       => '9.24',
                 
             ],
@@ -62,6 +63,7 @@ class MedicinesTabelSeeder extends Seeder
                 'expiry_date'       => now()->addYear(rand(3, 6))->format(config('panel.date_format')),
                 'category_id'       => 1,
                 'pharmacy_id'       => 2,
+                'brand_id'       => 1,
                 'price'       => ' 7.83',
                 
             ],
@@ -82,6 +84,7 @@ class MedicinesTabelSeeder extends Seeder
                 'expiry_date'       => now()->addYear(rand(3, 6))->format(config('panel.date_format')),
                 'category_id'       => 2,
                 'pharmacy_id'       => 3,
+                'brand_id'       => 2,
                 'price'       => '9.24',
                 
             ],
@@ -92,6 +95,7 @@ class MedicinesTabelSeeder extends Seeder
                 'expiry_date'       => now()->addYear(rand(3, 6))->format(config('panel.date_format')),
                 'category_id'       => 1,
                 'pharmacy_id'       => 3,
+                'brand_id'       => 4,
                 'price'       => ' 7.83',
                 
             ],
