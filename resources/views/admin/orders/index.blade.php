@@ -16,8 +16,9 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Order">
-                <thead>
+            <table class=" table table-bordered  table-hover datatable datatable-Order">
+                <thead class="table-heade">
+
                     <tr>
                         <th>
                             {{ trans('cruds.order.fields.id') }}

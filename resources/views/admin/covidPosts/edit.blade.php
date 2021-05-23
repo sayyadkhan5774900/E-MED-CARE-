@@ -10,46 +10,58 @@
         <form method="POST" action="{{ route("admin.covid-posts.update", [$covidPost->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <div class="form-group">
-                <label class="required" for="title">{{ trans('cruds.covidPost.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $covidPost->title) }}" required>
-                @if($errors->has('title'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('title') }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="title">{{ trans('cruds.covidPost.fields.title') }}</label>
+                        <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $covidPost->title) }}" required>
+                        @if($errors->has('title'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('title') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.covidPost.fields.title_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.covidPost.fields.title_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="excerpt">{{ trans('cruds.covidPost.fields.excerpt') }}</label>
-                <input class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', $covidPost->excerpt) }}" required>
-                @if($errors->has('excerpt'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('excerpt') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.covidPost.fields.excerpt_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="detail">{{ trans('cruds.covidPost.fields.detail') }}</label>
-                <textarea class="form-control {{ $errors->has('detail') ? 'is-invalid' : '' }}" name="detail" id="detail" required>{{ old('detail', $covidPost->detail) }}</textarea>
-                @if($errors->has('detail'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('detail') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.covidPost.fields.detail_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="image">{{ trans('cruds.covidPost.fields.image') }}</label>
-                <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
                 </div>
-                @if($errors->has('image'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('image') }}
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="excerpt">{{ trans('cruds.covidPost.fields.excerpt') }}</label>
+                        <input class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" type="text" name="excerpt" id="excerpt" value="{{ old('excerpt', $covidPost->excerpt) }}" required>
+                        @if($errors->has('excerpt'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('excerpt') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.covidPost.fields.excerpt_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.covidPost.fields.image_helper') }}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="detail">{{ trans('cruds.covidPost.fields.detail') }}</label>
+                        <textarea class="form-control {{ $errors->has('detail') ? 'is-invalid' : '' }}" name="detail" id="detail" required>{{ old('detail', $covidPost->detail) }}</textarea>
+                        @if($errors->has('detail'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('detail') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.covidPost.fields.detail_helper') }}</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="image">{{ trans('cruds.covidPost.fields.image') }}</label>
+                        <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">
+                        </div>
+                        @if($errors->has('image'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('image') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.covidPost.fields.image_helper') }}</span>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

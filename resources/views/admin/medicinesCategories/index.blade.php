@@ -16,8 +16,9 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-MedicinesCategory">
-                <thead>
+            <table class=" table table-bordered  table-hover datatable datatable-MedicinesCategory">
+                <thead class="table-heade">
+
                     <tr>
                         <th>
                             {{ trans('cruds.medicinesCategory.fields.id') }}

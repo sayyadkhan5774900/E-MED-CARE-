@@ -16,8 +16,8 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Brand">
-                <thead>
+            <table class=" table table-bordered table-hover datatable datatable-Brand">
+                <thead class="table-heade">
                     <tr>
                         <th>
                             {{ trans('cruds.brand.fields.id') }}
@@ -79,7 +79,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 2, 'desc' ]],
+    order: [[ 1, 'desc' ]],
     pageLength: 25,
   });
   let table = $('.datatable-Brand:not(.ajaxTable)').DataTable({ buttons: dtButtons })

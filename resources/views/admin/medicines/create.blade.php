@@ -9,85 +9,119 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.medicines.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label class="required" for="pharmacy_id">{{ trans('cruds.medicine.fields.pharmacy') }}</label>
-                <select class="form-control select2 {{ $errors->has('pharmacy') ? 'is-invalid' : '' }}" name="pharmacy_id" id="pharmacy_id" required>
-                    @foreach($pharmacies as $id => $entry)
-                        <option value="{{ $id }}" {{ old('pharmacy_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('pharmacy'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('pharmacy') }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="pharmacy_id">{{ trans('cruds.medicine.fields.pharmacy') }}</label>
+                        <select class="form-control select2 {{ $errors->has('pharmacy') ? 'is-invalid' : '' }}" name="pharmacy_id" id="pharmacy_id" required>
+                            @foreach($pharmacies as $id => $entry)
+                                <option value="{{ $id }}" {{ old('pharmacy_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('pharmacy'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('pharmacy') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.pharmacy_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicine.fields.pharmacy_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="category_id">{{ trans('cruds.medicine.fields.category') }}</label>
-                <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id" required>
-                    @foreach($categories as $id => $entry)
-                        <option value="{{ $id }}" {{ old('category_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('category'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('category') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicine.fields.category_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="name">{{ trans('cruds.medicine.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
-                @if($errors->has('name'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicine.fields.name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="description">{{ trans('cruds.medicine.fields.description') }}</label>
-                <input class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" type="text" name="description" id="description" value="{{ old('description', '') }}">
-                @if($errors->has('description'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('description') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicine.fields.description_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="price">{{ trans('cruds.medicine.fields.price') }}</label>
-                <input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" name="price" id="price" value="{{ old('price', '') }}" step="0.01" required>
-                @if($errors->has('price'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('price') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicine.fields.price_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <div class="form-check {{ $errors->has('in_stock') ? 'is-invalid' : '' }}">
-                    <input class="form-check-input" type="checkbox" name="in_stock" id="in_stock" value="1" required {{ old('in_stock', 0) == 1 || old('in_stock') === null ? 'checked' : '' }}>
-                    <label class="required form-check-label" for="in_stock">{{ trans('cruds.medicine.fields.in_stock') }}</label>
                 </div>
-                @if($errors->has('in_stock'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('in_stock') }}
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="category_id">{{ trans('cruds.medicine.fields.category') }}</label>
+                        <select class="form-control select2 {{ $errors->has('category') ? 'is-invalid' : '' }}" name="category_id" id="category_id" required>
+                            @foreach($categories as $id => $entry)
+                                <option value="{{ $id }}" {{ old('category_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('category'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('category') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.category_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicine.fields.in_stock_helper') }}</span>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="required" for="expiry_date">{{ trans('cruds.medicine.fields.expiry_date') }}</label>
-                <input class="form-control date {{ $errors->has('expiry_date') ? 'is-invalid' : '' }}" type="text" name="expiry_date" id="expiry_date" value="{{ old('expiry_date') }}" required>
-                @if($errors->has('expiry_date'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('expiry_date') }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="name">{{ trans('cruds.medicine.fields.name') }}</label>
+                        <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
+                        @if($errors->has('name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('name') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.name_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.medicine.fields.expiry_date_helper') }}</span>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="description">{{ trans('cruds.medicine.fields.description') }}</label>
+                        <input class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" type="text" name="description" id="description" value="{{ old('description', '') }}">
+                        @if($errors->has('description'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('description') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.description_helper') }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="price">{{ trans('cruds.medicine.fields.price') }}</label>
+                        <input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" name="price" id="price" value="{{ old('price', '') }}" step="0.01" required>
+                        @if($errors->has('price'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('price') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.price_helper') }}</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="expiry_date">{{ trans('cruds.medicine.fields.expiry_date') }}</label>
+                        <input class="form-control date {{ $errors->has('expiry_date') ? 'is-invalid' : '' }}" type="text" name="expiry_date" id="expiry_date" value="{{ old('expiry_date') }}" required>
+                        @if($errors->has('expiry_date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('expiry_date') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.expiry_date_helper') }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="expiry_date">{{ trans('cruds.medicine.fields.expiry_date') }}</label>
+                        <input class="form-control date {{ $errors->has('expiry_date') ? 'is-invalid' : '' }}" type="text" name="expiry_date" id="expiry_date" value="{{ old('expiry_date') }}" required>
+                        @if($errors->has('expiry_date'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('expiry_date') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.expiry_date_helper') }}</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check {{ $errors->has('in_stock') ? 'is-invalid' : '' }}">
+                            <input class="form-check-input" type="checkbox" name="in_stock" id="in_stock" value="1" required {{ old('in_stock', 0) == 1 || old('in_stock') === null ? 'checked' : '' }}>
+                            <label class="required form-check-label" for="in_stock">{{ trans('cruds.medicine.fields.in_stock') }}</label>
+                        </div>
+                        @if($errors->has('in_stock'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('in_stock') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.in_stock_helper') }}</span>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="brand_id">{{ trans('cruds.medicine.fields.brand') }}</label>
