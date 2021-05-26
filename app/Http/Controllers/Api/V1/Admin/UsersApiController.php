@@ -15,15 +15,30 @@ class UsersApiController extends Controller
 {
     public function index()
     {
-        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         return new UserResource(User::with(['roles'])->get());
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
+
+        $request->validate(
+            [
+                'name' => [
+                    'string',
+                    'required',
+                ],
+                'email' => [
+                    'required',
+                    'unique:users',
+                ],
+                'password' => [
+                    'required',
+                ]
+            ]
+        );
+
         $user = User::create($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        $user->roles()->sync([4]);
 
         return (new UserResource($user))
             ->response()

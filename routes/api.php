@@ -29,6 +29,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], 
     // Customer Detail
     Route::apiResource('customer-details', 'CustomerDetailApiController');
 
+    // Users
+    Route::apiResource('users', 'UsersApiController');
+
     // Order
     Route::apiResource('orders', 'OrderApiController');
 
