@@ -3,7 +3,7 @@
 // , 'middleware' => ['auth:sanctum']
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], function () {
-   
+
     // Brand
     Route::get('brands', 'BrandApiController@index');
     Route::get('brands/{brand}', 'BrandApiController@show');
@@ -30,10 +30,11 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], 
     Route::apiResource('customer-details', 'CustomerDetailApiController');
 
     // Users
-    Route::apiResource('users', 'UsersApiController');
+    Route::get('users/{user}', 'UsersApiController@show');
+    Route::post('users', 'UsersApiController@store');
 
     // Order
-    Route::apiResource('orders', 'OrderApiController');
+    Route::post('orders', 'OrderApiController@store');
 
 });
 

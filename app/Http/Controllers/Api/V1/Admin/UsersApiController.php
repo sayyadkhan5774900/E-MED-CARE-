@@ -13,11 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UsersApiController extends Controller
 {
-    public function index()
-    {
-        return new UserResource(User::with(['roles'])->get());
-    }
-
     public function store(Request $request)
     {
 
@@ -47,8 +42,6 @@ class UsersApiController extends Controller
 
     public function show(User $user)
     {
-        abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         return new UserResource($user->load(['roles']));
     }
 
@@ -60,14 +53,5 @@ class UsersApiController extends Controller
         return (new UserResource($user))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
-    }
-
-    public function destroy(User $user)
-    {
-        abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $user->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
