@@ -49,4 +49,9 @@ class Order extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function medicines()
+    {
+        return $this->hasMany(Medicine::class,'medicine_id');
+    }
 }
