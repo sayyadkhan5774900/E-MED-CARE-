@@ -10,8 +10,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->decimal('total', 15, 2);
-            $table->string('status')->nullable();
+            $table->string('status');
             $table->timestamps();
             $table->softDeletes();
         });

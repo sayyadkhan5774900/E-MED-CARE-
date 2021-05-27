@@ -38,14 +38,19 @@
                 <span class="help-block">{{ trans('cruds.order.fields.customer_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="total">{{ trans('cruds.order.fields.total') }}</label>
-                <input class="form-control {{ $errors->has('total') ? 'is-invalid' : '' }}" type="number" name="total" id="total" value="{{ old('total', '') }}" step="0.01" required>
-                @if($errors->has('total'))
+                <label class="required">{{ trans('cruds.order.fields.status') }}</label>
+                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status" required>
+                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Models\Order::STATUS_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('status', 'pending') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('status'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('total') }}
+                        {{ $errors->first('status') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.order.fields.total_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.order.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

@@ -41,10 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.order.fields.total') }}
+                            {{ trans('cruds.order.fields.status') }}
                         </th>
                         <td>
-                            {{ $order->total }}
+                            {{ App\Models\Order::STATUS_SELECT[$order->status] ?? '' }}
                         </td>
                     </tr>
                 </tbody>
