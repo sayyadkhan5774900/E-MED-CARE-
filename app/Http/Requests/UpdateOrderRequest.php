@@ -25,7 +25,7 @@ class UpdateOrderRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'total' => [
+            'status' => [
                 'required',
             ],
         ];

@@ -25,7 +25,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('customer-details', 'CustomerDetailApiController');
 
     // Order
-    Route::apiResource('orders', 'OrderApiController');
+    Route::apiResource('orders', 'OrderApiController', ['except' => ['store', 'update']]);
 
     // Pharmacy
     Route::apiResource('pharmacies', 'PharmacyApiController');

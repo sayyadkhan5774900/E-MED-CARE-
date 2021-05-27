@@ -156,126 +156,118 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 37,
-                'title' => 'order_create',
-            ],
-            [
-                'id'    => 38,
-                'title' => 'order_edit',
-            ],
-            [
-                'id'    => 39,
                 'title' => 'order_show',
             ],
             [
-                'id'    => 40,
+                'id'    => 38,
                 'title' => 'order_delete',
             ],
             [
-                'id'    => 41,
+                'id'    => 39,
                 'title' => 'order_access',
             ],
             [
-                'id'    => 42,
+                'id'    => 40,
                 'title' => 'pharmacy_create',
             ],
             [
-                'id'    => 43,
+                'id'    => 41,
                 'title' => 'pharmacy_edit',
             ],
             [
-                'id'    => 44,
+                'id'    => 42,
                 'title' => 'pharmacy_show',
             ],
             [
-                'id'    => 45,
+                'id'    => 43,
                 'title' => 'pharmacy_delete',
             ],
             [
-                'id'    => 46,
+                'id'    => 44,
                 'title' => 'pharmacy_access',
             ],
             [
-                'id'    => 47,
+                'id'    => 45,
                 'title' => 'covid_post_create',
             ],
             [
-                'id'    => 48,
+                'id'    => 46,
                 'title' => 'covid_post_edit',
             ],
             [
-                'id'    => 49,
+                'id'    => 47,
                 'title' => 'covid_post_show',
             ],
             [
-                'id'    => 50,
+                'id'    => 48,
                 'title' => 'covid_post_delete',
             ],
             [
-                'id'    => 51,
+                'id'    => 49,
                 'title' => 'covid_post_access',
             ],
             [
-                'id'    => 52,
+                'id'    => 50,
                 'title' => 'pharmacy_medicine_create',
             ],
             [
-                'id'    => 53,
+                'id'    => 51,
                 'title' => 'pharmacy_medicine_edit',
             ],
             [
-                'id'    => 54,
+                'id'    => 52,
                 'title' => 'pharmacy_medicine_show',
             ],
             [
-                'id'    => 55,
+                'id'    => 53,
                 'title' => 'pharmacy_medicine_delete',
             ],
             [
-                'id'    => 56,
+                'id'    => 54,
                 'title' => 'pharmacy_medicine_access',
             ],
             [
-                'id'    => 57,
+                'id'    => 55,
                 'title' => 'pharmacy_customer_create',
             ],
             [
-                'id'    => 58,
+                'id'    => 56,
                 'title' => 'pharmacy_customer_edit',
             ],
             [
-                'id'    => 59,
+                'id'    => 57,
                 'title' => 'pharmacy_customer_show',
             ],
             [
-                'id'    => 60,
+                'id'    => 58,
                 'title' => 'pharmacy_customer_delete',
             ],
             [
-                'id'    => 61,
+                'id'    => 59,
                 'title' => 'pharmacy_customer_access',
             ],
             [
-                'id'    => 62,
+                'id'    => 60,
                 'title' => 'pharmacy_order_create',
             ],
             [
-                'id'    => 63,
+                'id'    => 61,
                 'title' => 'pharmacy_order_edit',
             ],
             [
-                'id'    => 64,
+                'id'    => 62,
                 'title' => 'pharmacy_order_show',
             ],
             [
-                'id'    => 65,
+                'id'    => 63,
                 'title' => 'pharmacy_order_delete',
             ],
             [
-                'id'    => 66,
+                'id'    => 64,
                 'title' => 'pharmacy_order_access',
             ],
             [
-                'id'    => 67,
+                'id'    => 65,
                 'title' => 'profile_password_edit',
             ],
         ];

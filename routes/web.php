@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Order
     Route::delete('orders/destroy', 'OrderController@massDestroy')->name('orders.massDestroy');
-    Route::resource('orders', 'OrderController');
+    Route::resource('orders', 'OrderController', ['except' => ['create', 'store', 'edit', 'update']]);
 
     // Pharmacy
     Route::delete('pharmacies/destroy', 'PharmacyController@massDestroy')->name('pharmacies.massDestroy');
