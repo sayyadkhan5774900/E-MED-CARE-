@@ -11,8 +11,8 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="pharmacy_id">{{ trans('cruds.medicine.fields.pharmacy') }}</label>
-                <select class="form-control select2 {{ $errors->has('pharmacy') ? 'is-invalid' : '' }}" name="pharmacy_id" id="pharmacy_id" required>
+                <label for="pharmacy_id">{{ trans('cruds.medicine.fields.pharmacy') }}</label>
+                <select class="form-control select2 {{ $errors->has('pharmacy') ? 'is-invalid' : '' }}" name="pharmacy_id" id="pharmacy_id">
                     @foreach($pharmacies as $id => $entry)
                         <option value="{{ $id }}" {{ (old('pharmacy_id') ? old('pharmacy_id') : $medicine->pharmacy->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach

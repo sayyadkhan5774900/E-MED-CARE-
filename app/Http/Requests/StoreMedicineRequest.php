@@ -17,10 +17,6 @@ class StoreMedicineRequest extends FormRequest
     public function rules()
     {
         return [
-            'pharmacy_id' => [
-                'required',
-                'integer',
-            ],
             'category_id' => [
                 'required',
                 'integer',
