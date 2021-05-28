@@ -13,7 +13,7 @@ class CreateMedicinesTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('price', 15, 2);
-            $table->boolean('in_stock')->default(0);
+            $table->boolean('in_stock')->default(0)->nullable();
             $table->date('expiry_date');
             $table->timestamps();
             $table->softDeletes();
