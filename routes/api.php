@@ -26,15 +26,13 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin'], 
     Route::get('covid-posts', 'CovidPostApiController@index');
     Route::get('covid-posts/{covidPost}', 'CovidPostApiController@show');
 
-    // Customer Detail
-    Route::apiResource('customer-details', 'CustomerDetailApiController');
-
     // Users
-    Route::get('users/{user}', 'UsersApiController@show');
-    Route::post('users', 'UsersApiController@store');
+    Route::post('login', 'UsersApiController@login');
+    Route::post('register', 'UsersApiController@store');
 
-    // Order
-    Route::get('orders', 'OrderApiController@index');
+    // // Order
+    // Route::get('user/{user}/orders', 'OrderApiController@user_order');
+    // Route::get('orders/{order}', 'OrderApiController@show');
     Route::post('orders', 'OrderApiController@store');
 
 });

@@ -24,13 +24,13 @@
                             {{ trans('cruds.customerDetail.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.customerDetail.fields.customer') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.customerDetail.fields.phone') }}
                         </th>
                         <th>
                             {{ trans('cruds.customerDetail.fields.address') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.customerDetail.fields.customer') }}
                         </th>
                         <th>
                             &nbsp;
@@ -44,13 +44,13 @@
                                 {{ $customerDetail->id ?? '' }}
                             </td>
                             <td>
+                                {{ $customerDetail->customer->name ?? '' }}
+                            </td>
+                            <td>
                                 {{ $customerDetail->phone ?? '' }}
                             </td>
                             <td>
                                 {{ $customerDetail->address ?? '' }}
-                            </td>
-                            <td>
-                                {{ $customerDetail->customer->name ?? '' }}
                             </td>
                             <td>
                                 @can('customer_detail_show')
@@ -58,13 +58,6 @@
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
-
-                                @can('customer_detail_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.customer-details.edit', $customerDetail->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
-
                                 @can('customer_detail_delete')
                                     <form action="{{ route('admin.customer-details.destroy', $customerDetail->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">

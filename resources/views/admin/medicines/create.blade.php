@@ -46,6 +46,22 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
+                        <label for="brand_id">{{ trans('cruds.medicine.fields.brand') }}</label>
+                        <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
+                            @foreach($brands as $id => $entry)
+                                <option value="{{ $id }}" {{ old('brand_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('brand'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('brand') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.medicine.fields.brand_helper') }}</span>
+                    </div>        
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
                         <label class="required" for="name">{{ trans('cruds.medicine.fields.name') }}</label>
                         <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                         @if($errors->has('name'))
@@ -56,6 +72,8 @@
                         <span class="help-block">{{ trans('cruds.medicine.fields.name_helper') }}</span>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="description">{{ trans('cruds.medicine.fields.description') }}</label>
@@ -68,8 +86,6 @@
                         <span class="help-block">{{ trans('cruds.medicine.fields.description_helper') }}</span>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="required" for="price">{{ trans('cruds.medicine.fields.price') }}</label>
@@ -82,18 +98,6 @@
                         <span class="help-block">{{ trans('cruds.medicine.fields.price_helper') }}</span>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="required" for="expiry_date">{{ trans('cruds.medicine.fields.expiry_date') }}</label>
-                        <input class="form-control date {{ $errors->has('expiry_date') ? 'is-invalid' : '' }}" type="text" name="expiry_date" id="expiry_date" value="{{ old('expiry_date') }}" required>
-                        @if($errors->has('expiry_date'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('expiry_date') }}
-                            </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.medicine.fields.expiry_date_helper') }}</span>
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -110,33 +114,31 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <div class="form-check {{ $errors->has('in_stock') ? 'is-invalid' : '' }}">
-                            <input class="form-check-input" type="checkbox" name="in_stock" id="in_stock" value="1" required {{ old('in_stock', 0) == 1 || old('in_stock') === null ? 'checked' : '' }}>
-                            <label class="required form-check-label" for="in_stock">{{ trans('cruds.medicine.fields.in_stock') }}</label>
-                        </div>
-                        @if($errors->has('in_stock'))
+                        <label class="required" for="expiry_date">{{ trans('cruds.medicine.fields.expiry_date') }}</label>
+                        <input class="form-control date {{ $errors->has('expiry_date') ? 'is-invalid' : '' }}" type="text" name="expiry_date" id="expiry_date" value="{{ old('expiry_date') }}" required>
+                        @if($errors->has('expiry_date'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('in_stock') }}
+                                {{ $errors->first('expiry_date') }}
                             </div>
                         @endif
-                        <span class="help-block">{{ trans('cruds.medicine.fields.in_stock_helper') }}</span>
+                        <span class="help-block">{{ trans('cruds.medicine.fields.expiry_date_helper') }}</span>
                     </div>
                 </div>
             </div>
+            
             <div class="form-group">
-                <label for="brand_id">{{ trans('cruds.medicine.fields.brand') }}</label>
-                <select class="form-control select2 {{ $errors->has('brand') ? 'is-invalid' : '' }}" name="brand_id" id="brand_id">
-                    @foreach($brands as $id => $entry)
-                        <option value="{{ $id }}" {{ old('brand_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('brand'))
+                <div class="form-check {{ $errors->has('in_stock') ? 'is-invalid' : '' }}">
+                    <input class="form-check-input" type="checkbox" name="in_stock" id="in_stock" value="1" required {{ old('in_stock', 0) == 1 || old('in_stock') === null ? 'checked' : '' }}>
+                    <label class="required form-check-label" for="in_stock">{{ trans('cruds.medicine.fields.in_stock') }}</label>
+                </div>
+                @if($errors->has('in_stock'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('brand') }}
+                        {{ $errors->first('in_stock') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.medicine.fields.brand_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.medicine.fields.in_stock_helper') }}</span>
             </div>
+            
             <div class="form-group">
                 <label for="image">{{ trans('cruds.medicine.fields.image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('image') ? 'is-invalid' : '' }}" id="image-dropzone">

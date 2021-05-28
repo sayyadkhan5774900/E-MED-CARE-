@@ -22,6 +22,9 @@
                             {{ trans('cruds.order.fields.customer') }}
                         </th>
                         <th>
+                            Email
+                        </th>
+                        <th>
                             {{ trans('cruds.order.fields.status') }}
                         </th>
                         <th>
@@ -40,6 +43,9 @@
                             </td>
                             <td>
                                 {{ $order->customer->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $order->customer->email ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Order::STATUS_SELECT[$order->status] ?? '' }}
