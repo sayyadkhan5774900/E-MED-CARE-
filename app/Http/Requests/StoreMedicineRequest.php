@@ -32,9 +32,6 @@ class StoreMedicineRequest extends FormRequest
             'price' => [
                 'required',
             ],
-            'in_stock' => [
-                'required',
-            ],
             'expiry_date' => [
                 'required',
                 'date_format:' . config('panel.date_format'),

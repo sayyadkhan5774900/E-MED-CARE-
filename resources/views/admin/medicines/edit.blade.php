@@ -70,8 +70,9 @@
             </div>
             <div class="form-group">
                 <div class="form-check {{ $errors->has('in_stock') ? 'is-invalid' : '' }}">
-                    <input class="form-check-input" type="checkbox" name="in_stock" id="in_stock" value="1" {{ $medicine->in_stock || old('in_stock', 0) === 1 ? 'checked' : '' }} required>
-                    <label class="required form-check-label" for="in_stock">{{ trans('cruds.medicine.fields.in_stock') }}</label>
+                    <input type="hidden" name="in_stock" value="0">
+                    <input class="form-check-input" type="checkbox" name="in_stock" id="in_stock" value="1" {{ $medicine->in_stock || old('in_stock', 0) === 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="in_stock">{{ trans('cruds.medicine.fields.in_stock') }}</label>
                 </div>
                 @if($errors->has('in_stock'))
                     <div class="invalid-feedback">
