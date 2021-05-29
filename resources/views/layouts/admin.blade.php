@@ -29,7 +29,7 @@
 
     <style>
         @if ($roles[0]->title == 'Admin')
-                    
+
             .c-header.c-header-fixed {
                 background: rgb(0, 169, 175) !important;
                 color: white;
@@ -46,6 +46,14 @@
             }
 
             #sidebar {
+                background: rgb(0, 169, 175) !important;
+            }
+
+            #card-one{
+                background: rgb(0, 169, 175) !important;
+            }
+
+            #card-two{
                 background: rgb(0, 169, 175) !important;
             }
 
@@ -66,7 +74,7 @@
             }
         @endif
         @if ($roles[0]->title == 'Manager')
-                    
+
             .c-header.c-header-fixed {
                 background: rgb(0, 173, 107) !important;
                 color: white;
@@ -83,6 +91,14 @@
             }
 
             #sidebar {
+                background: rgb(0, 173, 107) !important;
+            }
+
+            #card-one{
+                background: rgb(0, 173, 107) !important;
+            }
+
+            #card-two{
                 background: rgb(0, 173, 107) !important;
             }
 

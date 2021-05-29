@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Gate;
+use App\Models\Pharmacy;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class HomeController
@@ -99,6 +100,65 @@ class HomeController
 
         $chart3 = new LaravelChart($settings3);
 
-        return view('home', compact('settings1', 'settings2', 'chart3'));
+
+        $settings4 = [
+            'chart_title'           => 'Last Thirty Days Orders',
+            'chart_type'            => 'number_block',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Order',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_days'           => '30',
+            'group_by_field_format' => 'd/m/Y H:i:s',
+            'column_class'          => 'col-md-12',
+            'entries_number'        => '5',
+            'translation_key'       => 'order',
+        ];
+
+        if(Gate::allows('pharmacy_medicine_create')){
+
+            $settings4['total_number'] = 0;
+            if (class_exists($settings4['model'])) {
+                $settings4['total_number'] = $settings4['model']::where('pharmacy_id', Pharmacy::where('owner_id',auth()->user()->id)->get()[0]->id)->when(isset($settings4['filter_field']), function ($query) use ($settings4) {
+                    if (isset($settings4['filter_days'])) {
+                        return $query->where($settings4['filter_field'], '>=',
+                    now()->subDays($settings4['filter_days'])->format('Y-m-d'));
+                    }
+                    if (isset($settings4['filter_period'])) {
+                        switch ($settings4['filter_period']) {
+                    case 'week': $start = date('Y-m-d', strtotime('last Monday')); break;
+                    case 'month': $start = date('Y-m') . '-01'; break;
+                    case 'year': $start = date('Y') . '-01-01'; break;
+                }
+                        if (isset($start)) {
+                            return $query->where($settings4['filter_field'], '>=', $start);
+                        }
+                    }
+                })
+                    ->{$settings4['aggregate_function'] ?? 'count'}($settings4['aggregate_field'] ?? '*');
+            }
+        }
+
+        $settings5 = [
+            'chart_title'           => 'Last Three Months Order Chart',
+            'chart_type'            => 'bar',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Order',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'week',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_days'           => '90',
+            'group_by_field_format' => 'd/m/Y H:i:s',
+            'column_class'          => 'col-md-12',
+            'entries_number'        => '5',
+            'translation_key'       => 'order',
+        ];
+
+        $chart5 = new LaravelChart($settings5);
+
+        return view('home', compact('settings1', 'settings2', 'chart3', 'settings4', 'chart5'));
     }
 }
