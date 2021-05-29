@@ -137,16 +137,6 @@
                 </a>
             </li>
         @endcan
-        @can('pharmacy_customer_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.pharmacy-customers.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pharmacy-customers") || request()->is("admin/pharmacy-customers/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-users c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.pharmacyCustomer.title') }}
-                </a>
-            </li>
-        @endcan
         @can('pharmacy_order_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.pharmacy-orders.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pharmacy-orders") || request()->is("admin/pharmacy-orders/*") ? "c-active" : "" }}">

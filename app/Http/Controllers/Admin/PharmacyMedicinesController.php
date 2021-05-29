@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
-use App\Http\Requests\MassDestroyPharmacyMedicineRequest;
 use App\Http\Requests\StorePharmacyMedicineRequest;
 use App\Http\Requests\UpdatePharmacyMedicineRequest;
 use App\Models\Brand;

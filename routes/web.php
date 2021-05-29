@@ -54,9 +54,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('pharmacy-medicines/ckmedia', 'MedicinesController@storeCKEditorImages')->name('pharmacy-medicines.storeCKEditorImages');
     Route::resource('pharmacy-medicines', 'PharmacyMedicinesController');
 
-    // Pharmacy Customers
-    Route::resource('pharmacy-customers', 'PharmacyCustomersController');
-
     // Pharmacy Orders
     Route::resource('pharmacy-orders', 'PharmacyOrdersController');
 });
