@@ -33,7 +33,7 @@ class PharmaciesTabelSeeder extends Seeder
                 'address'       => ' Malik Market, Zafar-ul-Haq Rd, Glass Factory, Mohalla Chaudhry Hukamdad, Chah Sultan, Rawalpindi, Punjab',
                 'longitude'       => 33.618326914681056,
                 'latitude'       => 73.07971443012673,
-                'owner_id'       => 1,
+                'owner_id'       => 4,
             ],
             [
                 'name'       => 'AL_BASIT C & D PHARMACY',
@@ -43,7 +43,7 @@ class PharmaciesTabelSeeder extends Seeder
                 'address'       => ' Haq Nawaz Rd, New Amarpura Rd, Chah Sultan, Rawalpindi, Punjab',
                 'longitude'       => 33.62066613643331,
                 'latitude'       => 73.07640294953653,
-                'owner_id'       => 1,
+                'owner_id'       => 5,
             ],
 
         ];

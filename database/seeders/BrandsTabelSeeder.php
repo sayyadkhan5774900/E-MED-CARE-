@@ -22,6 +22,9 @@ class BrandsTabelSeeder extends Seeder
                 'name'       => 'Pfizer',
             ],
             [
+                'name'       => 'Test',
+            ],
+            [
                 'name'       => 'Gsk',
             ],
             [

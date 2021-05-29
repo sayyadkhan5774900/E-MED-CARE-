@@ -27,6 +27,10 @@ class CategoriesTabelSeeder extends Seeder
             [
                 'name'       => 'Mask',
             ],
+            [
+                'name'       => 'Tablet',
+                'parent_id' => 2
+            ],
         ];
         foreach($categories as $key => $category)
         {
