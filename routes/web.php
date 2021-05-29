@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('pharmacy-medicines', 'PharmacyMedicinesController');
 
     // Pharmacy Orders
+    Route::post('pharmacy-orders/update-status/{id}', 'PharmacyOrdersController@updateStatus')->name('status.update');
     Route::resource('pharmacy-orders', 'PharmacyOrdersController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {

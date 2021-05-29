@@ -30,9 +30,6 @@
                             {{ trans('cruds.pharmacy.fields.phone') }}
                         </th>
                         <th>
-                            {{ trans('cruds.pharmacy.fields.address') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.pharmacy.fields.owner') }}
                         </th>
                         <th>
@@ -51,9 +48,6 @@
                             </td>
                             <td>
                                 {{ $pharmacy->phone ?? '' }}
-                            </td>
-                            <td>
-                                {{ $pharmacy->address ?? '' }}
                             </td>
                             <td>
                                 {{ $pharmacy->owner->name ?? '' }}

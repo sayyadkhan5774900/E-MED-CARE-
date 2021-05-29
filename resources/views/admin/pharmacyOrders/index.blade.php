@@ -48,22 +48,28 @@
                                 {{ $order->customer->email ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\Order::STATUS_SELECT[$order->status] ?? '' }}
+                                <form class="d-flex align-content-around justify-content-around" action="{{ route('admin.status.update', $order->id) }}" method="POST"  style="display: inline-block;">
+                                    <div>
+                                        <input type="hidden" name="_method" value="POST">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id='{{ $order->id }}'>
+                                            <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                                            @foreach(App\Models\Order::STATUS_SELECT as $key => $label)
+                                                <option value="{{ $key }}" {{ old('status', $order->status) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <input type="submit" class="btn btn-xs btn-success mt-1" value="{{ trans('global.update') }}">
+                                    </div>
+                                </form>
+                                {{-- {{ App\Models\Order::STATUS_SELECT[$order->status] ?? '' }} --}}
                             </td>
                             <td>
-                                @can('order_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.orders.show', $order->id) }}">
+                                @can('pharmacy_order_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.pharmacy-orders.show', $order->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
-                                @endcan
-
-
-                                @can('order_delete')
-                                    <form action="{{ route('admin.orders.destroy', $order->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
                                 @endcan
 
                             </td>

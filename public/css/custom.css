@@ -164,3 +164,11 @@ table.dataTable thead .sorting_desc {
 .c-sidebar-nav-link:hover {
     background: rgb(0, 49, 88) !important;
 }
+
+.fa-bars {
+    color: white !important;
+}
+
+.c-header-brand {
+    color: white !important;
+}

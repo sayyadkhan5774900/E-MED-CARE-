@@ -24,6 +24,86 @@
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet" /> --}}
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     @yield('styles')
+
+    @php $roles = auth()->user()->roles @endphp
+
+    <style>
+        @if ($roles[0]->title == 'Admin')
+                    
+            .c-header.c-header-fixed {
+                background: rgb(0, 169, 175) !important;
+                color: white;
+            }
+
+            .card-header {
+                background: rgb(0, 169, 175) !important;
+                color: white;
+            }
+
+            .table-heade {
+                background: rgb(0, 169, 175) !important;
+                color: white;
+            }
+
+            #sidebar {
+                background: rgb(0, 169, 175) !important;
+            }
+
+            .c-sidebar-nav-item:hover {
+                background: rgb(0, 126, 131) !important;
+            }
+
+            .c-sidebar-nav-link:hover {
+                background: rgb(0, 126, 131) !important;
+            }
+
+            .fa-bars {
+                color: white !important;
+            }
+
+            .c-header-brand {
+                color: white !important;
+            }
+        @endif
+        @if ($roles[0]->title == 'Manager')
+                    
+            .c-header.c-header-fixed {
+                background: rgb(0, 173, 107) !important;
+                color: white;
+            }
+
+            .card-header {
+                background: rgb(0, 173, 107) !important;
+                color: white;
+            }
+
+            .table-heade {
+                background: rgb(0, 173, 107) !important;
+                color: white;
+            }
+
+            #sidebar {
+                background: rgb(0, 173, 107) !important;
+            }
+
+            .c-sidebar-nav-item:hover {
+                background: rgb(0, 138, 85) !important;
+            }
+
+            .c-sidebar-nav-link:hover {
+                background: rgb(0, 138, 85) !important;
+            }
+
+            .fa-bars {
+                color: white !important;
+            }
+
+            .c-header-brand {
+                color: white !important;
+            }
+        @endif
+      </style>
+
 </head>
 
 <body class="c-app">

@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyPharmacyOrderRequest;
-use App\Http\Requests\StorePharmacyOrderRequest;
-use App\Http\Requests\UpdatePharmacyOrderRequest;
+
 use App\Models\Order;
 use App\Models\Pharmacy;
 use Gate;
@@ -22,6 +20,19 @@ class PharmacyOrdersController extends Controller
         $orders = Order::where('pharmacy_id', Pharmacy::where('owner_id',auth()->user()->id)->get()[0]->id)->with(['pharmacy', 'customer'])->get();
 
         return view('admin.pharmacyOrders.index',compact('orders'));
+    }
+
+    public function updateStatus(Request $request, $pharmacyOrder)
+    {
+        $request->validate([
+            'status' => ['required']
+        ]);
+
+        $order = Order::find($pharmacyOrder);
+
+        $order->update($request->all());
+
+        return redirect()->route('admin.pharmacy-orders.index');
     }
 
     public function show($pharmacyOrder)

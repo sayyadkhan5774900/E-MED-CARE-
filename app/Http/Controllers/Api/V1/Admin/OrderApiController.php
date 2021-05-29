@@ -61,7 +61,8 @@ class OrderApiController extends Controller
             'status' => 'pending',
         ]);
 
-        User::find($request->customer_id)->customerDetail()->update([
+        $user = User::find($request->customer_id);
+        $user->customerDetail()->update([
             'province' => $request->province,
             'city' => $request->city,
             'phone' => $request->phone,
@@ -75,6 +76,30 @@ class OrderApiController extends Controller
                 'quantity' => $medicine['quantity'],
             ]);
         }
+
+        // \Mail::send('order_created',
+        // array(
+        //     'name' => $user->name,
+        //     'email' => $user->email,
+        //     'phone' => $user->customerDetail->phone,
+        //     'date' => now(),
+        // ), function($message) use ($user)
+        //   {
+        //      $message->from($user->email);
+        //      $message->to('admin@gmail.com');
+        //   });
+
+        // \Mail::send('order_created',
+        // array(
+        //     'name' => $user->name,
+        //     'email' => $user->email,
+        //     'phone' => $user->customerDetail->phone,
+        //     'date' => now(),
+        // ), function($message) use ($user,$request)
+        //   {
+        //      $message->from($user->email);
+        //      $message->to(Pharmacy::find($request->pharmacy_id)->owner()->email);
+        //   });
 
         return (new OrderResource($order))
             ->response()

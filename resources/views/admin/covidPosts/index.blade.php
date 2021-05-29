@@ -27,9 +27,6 @@
                             {{ trans('cruds.covidPost.fields.title') }}
                         </th>
                         <th>
-                            {{ trans('cruds.covidPost.fields.excerpt') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -42,9 +39,6 @@
                             </td>
                             <td>
                                 {{ $covidPost->title ?? '' }}
-                            </td>
-                            <td>
-                                {{ $covidPost->excerpt ?? '' }}
                             </td>
                             <td>
                                 @can('covid_post_show')
