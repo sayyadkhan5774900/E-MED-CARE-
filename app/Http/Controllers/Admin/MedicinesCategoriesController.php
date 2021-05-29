@@ -96,14 +96,7 @@ class MedicinesCategoriesController extends Controller
 
         return back();
     }
-
-    public function massDestroy(MassDestroyMedicinesCategoryRequest $request)
-    {
-        MedicinesCategory::whereIn('id', request('ids'))->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
-    }
-
+    
     public function storeCKEditorImages(Request $request)
     {
         abort_if(Gate::denies('medicines_category_create') && Gate::denies('medicines_category_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

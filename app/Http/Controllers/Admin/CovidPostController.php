@@ -89,13 +89,6 @@ class CovidPostController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyCovidPostRequest $request)
-    {
-        CovidPost::whereIn('id', request('ids'))->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
-    }
-
     public function storeCKEditorImages(Request $request)
     {
         abort_if(Gate::denies('covid_post_create') && Gate::denies('covid_post_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

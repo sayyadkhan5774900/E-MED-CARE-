@@ -62,11 +62,4 @@ class PharmacyOrdersController extends Controller
 
         return back();
     }
-
-    public function massDestroy(MassDestroyPharmacyOrderRequest $request)
-    {
-        PharmacyOrder::whereIn('id', request('ids'))->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
-    }
 }

@@ -74,11 +74,4 @@ class CustomerDetailController extends Controller
 
         return back();
     }
-
-    public function massDestroy(MassDestroyCustomerDetailRequest $request)
-    {
-        CustomerDetail::whereIn('id', request('ids'))->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
-    }
 }

@@ -108,13 +108,6 @@ class MedicinesController extends Controller
         return back();
     }
 
-    public function massDestroy(MassDestroyMedicineRequest $request)
-    {
-        Medicine::whereIn('id', request('ids'))->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
-    }
-
     public function storeCKEditorImages(Request $request)
     {
         abort_if(Gate::denies('medicine_create') && Gate::denies('medicine_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');

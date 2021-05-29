@@ -65,11 +65,4 @@ class BrandController extends Controller
 
         return back();
     }
-
-    public function massDestroy(MassDestroyBrandRequest $request)
-    {
-        Brand::whereIn('id', request('ids'))->delete();
-
-        return response(null, Response::HTTP_NO_CONTENT);
-    }
 }
