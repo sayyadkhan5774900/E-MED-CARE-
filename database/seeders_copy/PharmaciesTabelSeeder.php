@@ -16,14 +16,14 @@ class PharmaciesTabelSeeder extends Seeder
     {
         $pharmacies = [
             [
-                'name'       => 'Makkah Pharmacy',
+                'name'       => 'BIN SADIQ PHARMACY',
                 'phone'       => '03120439820',
                 'opening_time'       => '09:00:00',
                 'closing_time'       => '24:00:00',
-                'address'       => 'Wah Link Road, Phase 2 New City, Wah, New City Phase II Wah Cantt, Attock, Punjab 47040, Pakistan',
-                'longitude'       => 33.73968869321495,
-                'latitude'       => 72.72651866705093,
-                'owner_id'       => 4,
+                'address'       => 'Zafar ul Haq Rd, Dhoke khabba, Rawalpindi, Punjab',
+                'longitude'       => 33.61810108504421,
+                'latitude'       => 73.07880764889357,
+                'owner_id'       => 1,
             ],
             [
                 'name'       => 'SADIQ PHARMACY',
@@ -33,17 +33,17 @@ class PharmaciesTabelSeeder extends Seeder
                 'address'       => ' Malik Market, Zafar-ul-Haq Rd, Glass Factory, Mohalla Chaudhry Hukamdad, Chah Sultan, Rawalpindi, Punjab',
                 'longitude'       => 33.618326914681056,
                 'latitude'       => 73.07971443012673,
-                'owner_id'       => 5,
+                'owner_id'       => 4,
             ],
             [
-                'name'       => 'Shani pharma ',
+                'name'       => 'AL_BASIT C & D PHARMACY',
                 'phone'       => '03456739820',
                 'opening_time'       => '24:00:00',
                 'closing_time'       => '09:00:00',
-                'address'       => ' Phase 2 Wah Model Town, Rawalpindi, Punjab, Pakistan',
-                'longitude'       => 33.74031351358714,
-                'latitude'       => 72.72995020590874,
-                'owner_id'       => 6,
+                'address'       => ' Haq Nawaz Rd, New Amarpura Rd, Chah Sultan, Rawalpindi, Punjab',
+                'longitude'       => 33.62066613643331,
+                'latitude'       => 73.07640294953653,
+                'owner_id'       => 5,
             ],
 
         ];

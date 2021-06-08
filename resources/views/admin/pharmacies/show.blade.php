@@ -106,22 +106,4 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.relatedData') }}
-    </div>
-    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="#pharmacy_medicines" role="tab" data-toggle="tab">
-                {{ trans('cruds.medicine.title') }}
-            </a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="pharmacy_medicines">
-            @includeIf('admin.pharmacies.relationships.pharmacyMedicines', ['medicines' => $pharmacy->pharmacyMedicines])
-        </div>
-    </div>
-</div>
-
 @endsection
