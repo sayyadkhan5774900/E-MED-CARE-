@@ -36,7 +36,7 @@
                             {{ trans('cruds.medicine.fields.in_stock') }}
                         </th>
                         <th>
-                            {{ trans('cruds.medicine.fields.expiry_date') }}
+                            Pharmacy
                         </th>
                         <th>
                             &nbsp;
@@ -63,7 +63,7 @@
                                 <input type="checkbox" disabled="disabled" {{ $medicine->in_stock ? 'checked' : '' }}>
                             </td>
                             <td>
-                                {{ $medicine->expiry_date ?? '' }}
+                                {{ $medicine->pharmacy->name ?? '' }}
                             </td>
                             <td>
                                 @can('medicine_show')

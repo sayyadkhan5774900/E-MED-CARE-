@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pharmacy;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -64,6 +66,23 @@ class RegisterController extends Controller
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    protected function registered(Request $request, $user)
+    {
+        $user->roles()->sync(4);
+
+        $pharmacy = Pharmacy::create([
+            'name' => $request['name'],
+            'description' =>  $request['description'] ,
+            'phone' => $request['phone'] ,
+            'address' => $request['address'] ,
+            'opening_time' => $request['opening_time'] ,
+            'closing_time' => $request['closing_time'] ,
+            'owner_id' => $user->id,
+            'longitude' => $request['longitude'] ,
+            'latitude' => $request['latitude']
         ]);
     }
 }

@@ -6,6 +6,7 @@ use \DateTimeInterface;
 use App\Notifications\VerifyUserNotification;
 use Carbon\Carbon;
 use Hash;
+use App\Models\Pharmacy;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -86,6 +87,11 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function pharmacy()
+    {
+        return $this->hasOne(Pharmacy::class,'owner_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

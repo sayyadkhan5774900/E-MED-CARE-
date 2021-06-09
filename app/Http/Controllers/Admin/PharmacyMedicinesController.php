@@ -23,7 +23,7 @@ class PharmacyMedicinesController extends Controller
     {
         abort_if(Gate::denies('pharmacy_medicine_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $medicines = Medicine::where('pharmacy_id',auth()->user()->id)->with(['pharmacy', 'category', 'brand', 'media'])->get();
+        $medicines = Medicine::where('pharmacy_id',auth()->user()->pharmacy->id)->with(['pharmacy', 'category', 'brand', 'media'])->get();
 
         return view('admin.pharmacyMedicines.index',compact('medicines'));
     }
@@ -100,7 +100,7 @@ class PharmacyMedicinesController extends Controller
     public function show($pharmacyMedicine)
     {
         abort_if(Gate::denies('pharmacy_medicine_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-       
+
         $medicine = Medicine::find($pharmacyMedicine);
 
         return view('admin.pharmacyMedicines.show', compact('medicine'));

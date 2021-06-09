@@ -9,20 +9,6 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.pharmacies.store") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label class="required" for="owner_id">{{ trans('cruds.pharmacy.fields.owner') }}</label>
-                <select class="form-control select2 {{ $errors->has('owner') ? 'is-invalid' : '' }}" name="owner_id" id="owner_id" required>
-                    @foreach($owners as $id => $entry)
-                        <option value="{{ $id }}" {{ old('owner_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('owner'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('owner') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.pharmacy.fields.owner_helper') }}</span>
-            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -124,6 +110,32 @@
                             </div>
                         @endif
                         <span class="help-block">{{ trans('cruds.pharmacy.fields.latitude_helper') }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="email">{{ trans('cruds.user.fields.email') }}</label>
+                        <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" value="{{ old('email') }}" required>
+                        @if($errors->has('email'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.user.fields.email_helper') }}</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="required" for="password">{{ trans('cruds.user.fields.password') }}</label>
+                        <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" name="password" id="password" required>
+                        @if($errors->has('password'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('password') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.user.fields.password_helper') }}</span>
                     </div>
                 </div>
             </div>

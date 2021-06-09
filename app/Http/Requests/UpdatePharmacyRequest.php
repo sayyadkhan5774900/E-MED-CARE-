@@ -41,10 +41,6 @@ class UpdatePharmacyRequest extends FormRequest
                 'required',
                 'date_format:' . config('panel.time_format'),
             ],
-            'owner_id' => [
-                'required',
-                'integer',
-            ],
             'longitude' => [
                 'string',
                 'required',

@@ -10,20 +10,6 @@
         <form method="POST" action="{{ route("admin.pharmacies.update", [$pharmacy->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <div class="form-group">
-                <label class="required" for="owner_id">{{ trans('cruds.pharmacy.fields.owner') }}</label>
-                <select class="form-control select2 {{ $errors->has('owner') ? 'is-invalid' : '' }}" name="owner_id" id="owner_id" required>
-                    @foreach($owners as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('owner_id') ? old('owner_id') : $pharmacy->owner->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('owner'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('owner') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.pharmacy.fields.owner_helper') }}</span>
-            </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">

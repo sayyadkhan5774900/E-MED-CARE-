@@ -17,7 +17,7 @@ class PharmacyOrdersController extends Controller
     {
         abort_if(Gate::denies('pharmacy_order_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $orders = Order::where('pharmacy_id', Pharmacy::where('owner_id',auth()->user()->id)->get()[0]->id)->with(['pharmacy', 'customer'])->get();
+        $orders = Order::where('pharmacy_id', auth()->user()->pharmacy->id)->with(['pharmacy', 'customer'])->get();
 
         return view('admin.pharmacyOrders.index',compact('orders'));
     }
@@ -38,7 +38,7 @@ class PharmacyOrdersController extends Controller
     public function show($pharmacyOrder)
     {
         abort_if(Gate::denies('pharmacy_order_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-       
+
         $order = Order::find($pharmacyOrder);
 
         $order->load('pharmacy', 'customer');

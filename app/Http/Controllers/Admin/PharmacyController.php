@@ -34,7 +34,35 @@ class PharmacyController extends Controller
 
     public function store(StorePharmacyRequest $request)
     {
-        $pharmacy = Pharmacy::create($request->all());
+        $request->validate([
+            'email' => [
+                'required',
+                'unique:users',
+            ],
+            'password' => [
+                'required',
+            ]
+        ]);
+
+        $user = User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ]);
+
+        $user->roles()->sync(4);
+
+        $pharmacy = Pharmacy::create([
+            'name' => $request['name'],
+            'description' =>  $request['description'] ,
+            'phone' => $request['phone'] ,
+            'address' => $request['address'] ,
+            'opening_time' => $request['opening_time'] ,
+            'closing_time' => $request['closing_time'] ,
+            'owner_id' => $user->id,
+            'longitude' => $request['longitude'] ,
+            'latitude' => $request['latitude']
+        ]);
 
         return redirect()->route('admin.pharmacies.index');
     }
@@ -43,11 +71,9 @@ class PharmacyController extends Controller
     {
         abort_if(Gate::denies('pharmacy_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $owners = User::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $pharmacy->load('owner');
 
-        return view('admin.pharmacies.edit', compact('owners', 'pharmacy'));
+        return view('admin.pharmacies.edit', compact('pharmacy'));
     }
 
     public function update(UpdatePharmacyRequest $request, Pharmacy $pharmacy)
