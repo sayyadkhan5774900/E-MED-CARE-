@@ -82,15 +82,14 @@ class HomeController
         }
 
         $settings3 = [
-            'chart_title'           => 'Last Three Months Order Chart',
-            'chart_type'            => 'bar',
+            'chart_title'           => 'Last Month Order',
+            'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\Models\Order',
             'group_by_field'        => 'created_at',
-            'group_by_period'       => 'week',
+            'group_by_period'       => 'month',
             'aggregate_function'    => 'count',
             'filter_field'          => 'created_at',
-            'filter_days'           => '90',
             'group_by_field_format' => 'd/m/Y H:i:s',
             'column_class'          => 'col-md-12',
             'entries_number'        => '5',
