@@ -15,9 +15,9 @@ class CovidPostResource extends JsonResource
             'title' => $this->title,
             'excerpt' => $this->excerpt,
             'detail' => $this->detail,
-            'image_url' => $this->image->url,
-            'image_thumbnail' => $this->image->thumbnail,
-            'image_preview' => $this->image->preview,
+            'image_url' => $this->image ? $this->image->url : '',
+            'image_thumbnail' => $this->image ? $this->image->thumbnail : '',
+            'image_preview' => $this->image ? $this->image->preview : '',
         ];
     }
 }
