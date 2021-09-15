@@ -132,7 +132,13 @@
                     <b>Total</b>
                 </div>
                 <div>
-                    <b>4324</b>
+                    {{ $total = null }}
+                    @foreach ($medicines as $medicine)
+                        <div class="d-none">
+                            {{ $total = $total + ( App\Models\Medicine::find($medicine->medicine_id)->price *  $medicine->quantity) }}
+                        </div>
+                    @endforeach
+                    <b>{{ $total }}</b>
                 </div>
             </div>
             <div class="form-group">
