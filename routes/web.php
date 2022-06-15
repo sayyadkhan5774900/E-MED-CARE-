@@ -1,6 +1,22 @@
 <?php
 
-Route::redirect('/', '/login');
+use App\Http\Controllers\Frontend\PageController;
+
+Route::group(['namespace' => 'Frontend'], function () {
+
+    Route::get('/', 'PageController@index')->name('welcome');
+    Route::get('about', 'PageController@about')->name('about');
+    Route::get('doctors', 'PageController@doctors')->name('doctors');
+    Route::get('contact', 'PageController@contact')->name('contact');
+    Route::get('shop', 'PageController@shop')->name('shop');
+    Route::get('cart', 'PageController@cart')->name('cart');
+    Route::get('checkout', 'PageController@checkout')->name('checkout');
+    Route::get('shop/single', 'PageController@shopSingle')->name('single');
+    Route::get('thankyou', 'PageController@thankyou')->name('thankyou');
+
+});
+
+
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
